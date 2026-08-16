@@ -27,7 +27,7 @@ export default function ContactPage() {
         eyebrow={contactDetails.eyebrow}
         heading={contactDetails.heading}
         items={contactDetails.items}
-        columns={3}
+        columns={4}
       />
 
       <ContactPageForm />

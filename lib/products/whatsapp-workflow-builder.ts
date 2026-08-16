@@ -123,6 +123,6 @@ export const closingCta = {
   heading: "Start with the Best WhatsApp No-Code Workflow Builder",
   description:
     "Join the businesses growing sales and support on the official WhatsApp Business API with WALOOP — talk to the team and go live this week.",
-  primaryCta: { label: "Chat on WhatsApp", href: "/#contact" },
-  secondaryCta: { label: "+91 9712222776", href: "tel:+919712222776" },
+  primaryCta: { label: "Chat on WhatsApp", href: "https://wa.me/918758408987" },
+  secondaryCta: { label: "+91 87580 18050", href: "tel:+918758018050" },
 };

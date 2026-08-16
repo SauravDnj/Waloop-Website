@@ -27,6 +27,11 @@ export const contactDetails = {
       description: siteConfig.phone,
     },
     {
+      icon: "MessageCircle",
+      title: "WhatsApp",
+      description: siteConfig.whatsapp,
+    },
+    {
       icon: "MapPin",
       title: "Office",
       description: siteConfig.hq,

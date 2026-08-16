@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Mail, Phone, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 import { SquareDotFrame } from "@/components/ui/SquareDotFrame";
 import { footerLinks, siteConfig } from "@/lib/content";
@@ -52,6 +52,14 @@ export function Footer() {
               </a>
               <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-2 hover:text-brand-green-deep dark:hover:text-brand-green">
                 <Phone className="h-4 w-4" /> {siteConfig.phone}
+              </a>
+              <a
+                href={siteConfig.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-brand-green-deep dark:hover:text-brand-green"
+              >
+                <MessageCircle className="h-4 w-4" /> {siteConfig.whatsapp} (WhatsApp)
               </a>
             </div>
           </div>

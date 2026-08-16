@@ -10,8 +10,10 @@ export const siteConfig = {
   foundedYear: 2015,
   hq: "Gujarat, India",
   teamSize: "50+",
-  email: "hello@waloop.ai",
-  phone: "+91 97000 00000",
+  email: "official.waloop@gmail.com",
+  phone: "+91 87580 18050",
+  whatsapp: "+91 87584 08987",
+  whatsappLink: "https://wa.me/918758408987",
   rating: "4.8/5",
 };
 
