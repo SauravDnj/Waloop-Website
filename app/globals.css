@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Base surfaces — Agenio: white surfaces, hairline borders, light-gray alt tint */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f3f4f6;
+  --color-border: rgba(3, 7, 18, 0.1);
+
+  /* Text */
+  --color-text: #030712;
+  --color-text-muted: #6b7280;
+  --color-text-soft: #9199a3;
+
+  /* Brand — Agenio lime accent + dark charcoal soft-UI surfaces */
+  --color-brand-green: #98ff03; /* lime accent: icons, dots, underlines, dark-mode text */
+  --color-brand-green-dark: #181818; /* near-black, used for opaque "dark band" sections */
+  --color-brand-green-deep: #1f1f25; /* dark charcoal, used for light-mode text accents */
+  --color-brand-lime: #b2ff43; /* lighter lime, gradient partner */
+
+  --gradient-brand: linear-gradient(178.82deg, #b2ff43 1.01%, #98ff03 105.12%);
+  --gradient-ai: linear-gradient(135deg, #1f1f25 0%, #98ff03 100%);
+  --gradient-dark-btn: linear-gradient(137.66deg, #40454a 21.13%, #292c2e 80.53%);
+  --gradient-icon-lime: linear-gradient(178.82deg, #b2ff43 1.01%, #98ff03 105.12%);
+
+  --color-hero-glow-1: rgba(152, 255, 3, 0.1);
+  --color-hero-glow-2: rgba(31, 31, 37, 0.06);
+  --color-section-tint: rgba(3, 7, 18, 0.03);
+
+  --shadow-soft: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 1px 3px -1px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 0 50px -12px rgba(152, 255, 3, 0.25);
+  --shadow-brand-glow: 0 8px 20px -8px rgba(152, 255, 3, 0.35);
+
+  /* Soft-panel neumorphic recipe — pricing/FAQ/working-process/team-chip cards */
+  --panel-bg: linear-gradient(137.66deg, #f5f5f5 21.13%, #f2f2f2 80.53%);
+  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.6), inset 0px -5px 0px #e4e4e4,
+    inset 0px -6px 0px 1px #fafafa;
+
+  /* Dark soft-UI button recipe */
+  --shadow-btn: 0px 3px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px rgba(255, 255, 255, 0.6),
+    inset 0px -3px 0px #1a1a1a, inset 0px -4px 0px 1px rgba(255, 255, 255, 0.1);
+
+  --radius-card: 12px;
+  --radius-btn: 12px;
+  --radius-panel: 12px;
+}
+
+.dark {
+  --color-bg: #0a0a0a;
+  --color-bg-alt: #121212;
+  --color-surface: #121212;
+  --color-surface-alt: #1a1a1a;
+  --color-border: #292929;
+
+  --color-text: #fafafa;
+  --color-text-muted: #a3a3a3;
+  --color-text-soft: #737373;
+
+  --color-brand-green: #98ff03;
+  --color-brand-green-dark: #000000;
+  --color-brand-green-deep: #98ff03;
+  --color-brand-lime: #b2ff43;
+
+  --color-hero-glow-1: rgba(152, 255, 3, 0.16);
+  --color-hero-glow-2: rgba(255, 255, 255, 0.05);
+  --color-section-tint: rgba(255, 255, 255, 0.03);
+
+  --shadow-soft: 0 4px 24px -8px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 1px 3px -1px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 60px -12px rgba(152, 255, 3, 0.3);
+  --shadow-brand-glow: 0 8px 20px -8px rgba(152, 255, 3, 0.5);
+
+  --panel-bg: linear-gradient(137.66deg, #1c1c1c 21.13%, #161616 80.53%);
+  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.06), inset 0px -5px 0px #050505,
+    inset 0px -6px 0px 1px #0d0d0d;
+
+  --shadow-btn: 0px 3px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.08),
+    inset 0px -3px 0px #000000, inset 0px -4px 0px 1px rgba(255, 255, 255, 0.05);
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-alt: var(--color-bg-alt);
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-border: var(--color-border);
+
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-soft: var(--color-text-soft);
+
+  --color-brand-green: var(--color-brand-green);
+  --color-brand-green-dark: var(--color-brand-green-dark);
+  --color-brand-green-deep: var(--color-brand-green-deep);
+  --color-brand-lime: var(--color-brand-lime);
+
+  --radius-card: var(--radius-card);
+  --radius-btn: var(--radius-btn);
+  --radius-panel: var(--radius-panel);
+
+  --font-sans: var(--font-urbanist), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-brand-green);
+  color: #06110c;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Opt-in giant display treatment — hero/CTA headlines only */
+.text-display {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.text-gradient-heading {
+  background: linear-gradient(137.66deg, #55595c 21.13%, #000000 80.53%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root.dark .text-gradient-heading,
+.dark .text-gradient-heading,
+.section-dark .text-gradient-heading {
+  background: linear-gradient(137.66deg, #ffffff 21.13%, #9199a3 80.53%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Small lime "eyebrow" indicator dot — Agenio tag/badge accent */
+.dot-lime {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color-brand-green);
+  flex: none;
+}
+
+/* Soft-panel neumorphic card recipe — pricing/FAQ/working-process cards */
+.soft-panel {
+  background: var(--panel-bg);
+  box-shadow: var(--shadow-panel);
+  border-radius: var(--radius-panel);
+}
+
+/* Dark charcoal soft-UI panel recipe — highlighted pricing tier, dark card variants */
+.panel-dark {
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.75);
+  --color-text-soft: rgba(255, 255, 255, 0.55);
+  --color-border: rgba(255, 255, 255, 0.18);
+  background: var(--gradient-dark-btn);
+  box-shadow: var(--shadow-btn);
+  border-radius: var(--radius-panel);
+  color: var(--color-text);
+}
+
+/* Dark charcoal soft-UI button recipe */
+.btn-soft-dark {
+  background:
+    radial-gradient(62.56% 62.56% at 28.14% -10.42%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%),
+    var(--gradient-dark-btn);
+  box-shadow: var(--shadow-btn);
+  color: #ffffff;
+}
+
+.text-gradient-brand {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-ai {
+  background: var(--gradient-ai);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-brand-glow {
+  box-shadow: var(--shadow-brand-glow);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.bg-hero-glow {
+  background-image:
+    radial-gradient(60% 60% at 50% 0%, var(--color-hero-glow-1), transparent),
+    radial-gradient(40% 40% at 85% 10%, var(--color-hero-glow-2), transparent);
+}
+
+.bg-section-tint {
+  background-color: var(--color-section-tint);
+}
+
+.section-dark {
+  --color-bg: #0a0a0a;
+  --color-bg-alt: #121212;
+  --color-surface: #121212;
+  --color-surface-alt: #1a1a1a;
+  --color-border: #292929;
+  --color-text: #fafafa;
+  --color-text-muted: #a3a3a3;
+  --color-text-soft: #737373;
+
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 28s) linear infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
