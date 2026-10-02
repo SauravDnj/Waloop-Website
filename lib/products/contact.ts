@@ -1,40 +1,18 @@
-// Content data for the /contact marketing page.
-// Reuses the real contact details already defined in lib/content.ts (siteConfig)
-// rather than inventing new ones.
+// Content data for the /contact page (spec §60).
 
-import type { IconGridItem } from "@/components/product/IconGrid";
 import { siteConfig } from "@/lib/content";
 
 export const hero = {
-  badge: "Get in Touch",
-  title: "Contact WALOOP",
+  badge: "Contact",
+  title: "Let's Build Your Customer Journey",
   description:
-    `Reach our team for product demos, enterprise pricing, or technical support. ${siteConfig.name} typically responds within one business day.`,
+    "Have questions about WALOOP, plans, product capabilities, or your business use case? Connect with the WALOOP team.",
 };
 
-export const contactDetails = {
-  eyebrow: "Reach Us",
-  heading: "Contact Details",
-  items: [
-    {
-      icon: "Mail",
-      title: "Email",
-      description: siteConfig.email,
-    },
-    {
-      icon: "Phone",
-      title: "Phone",
-      description: siteConfig.phone,
-    },
-    {
-      icon: "MessageCircle",
-      title: "WhatsApp",
-      description: siteConfig.whatsapp,
-    },
-    {
-      icon: "MapPin",
-      title: "Office",
-      description: siteConfig.hq,
-    },
-  ] satisfies IconGridItem[],
-};
+export const contactDetails = [
+  { icon: "whatsapp", title: "WhatsApp", value: siteConfig.whatsapp, href: siteConfig.whatsappLink, note: "Fastest way to reach us" },
+  { icon: "Phone", title: "Phone", value: siteConfig.phone, href: siteConfig.phoneLink },
+  { icon: "Mail", title: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+  { icon: "Globe", title: "Website", value: siteConfig.websiteLabel, href: siteConfig.website },
+  { icon: "LayoutDashboard", title: "Application", value: siteConfig.appLabel, href: siteConfig.appUrl, note: "Log in to WALOOP" },
+];

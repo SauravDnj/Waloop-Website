@@ -9,19 +9,20 @@ type ButtonProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart" | "onAnimationEnd" | "onTransitionEnd"
 > & {
-  variant?: "primary" | "secondary" | "ghost" | "ghost-dark";
+  variant?: "primary" | "brand" | "secondary" | "ghost" | "ghost-dark";
   size?: "sm" | "md" | "lg";
   as?: "button" | "a";
   href?: string;
-  /** Leading icon rendered in a lime-gradient rounded chip (Agenio "with-icon" button). */
+  /** Leading icon rendered in a brand-gradient rounded chip. */
   icon?: React.ReactNode;
 };
 
 const base =
-  "relative inline-flex items-center justify-center gap-2 rounded-btn font-heading font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/60 disabled:opacity-50 disabled:pointer-events-none";
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-btn font-heading font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/60 disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary: "btn-soft-dark hover:brightness-110",
+  brand: "bg-brand-gradient text-white shadow-brand-glow hover:brightness-110",
   secondary: "soft-panel text-text hover:brightness-95",
   ghost: "text-text hover:bg-surface-alt",
   "ghost-dark": "text-white border border-white/25 hover:bg-white/10",
@@ -49,7 +50,7 @@ function IconChip({ size, children }: { size: NonNullable<ButtonProps["size"]>; 
   return (
     <span
       className={cn(
-        "absolute top-1/2 -translate-y-1/2 flex items-center justify-center rounded-[8px] bg-[image:var(--gradient-icon-lime)] text-[#1F1F25] shadow-[0_4px_8px_rgba(0,0,0,0.08)]",
+        "absolute top-1/2 -translate-y-1/2 flex items-center justify-center rounded-[8px] bg-[image:var(--gradient-icon-lime)] text-white shadow-[0_4px_10px_rgba(11,92,255,0.35)]",
         iconChipSize[size],
       )}
     >

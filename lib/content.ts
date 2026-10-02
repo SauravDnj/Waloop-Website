@@ -1,572 +1,387 @@
 // Central content store for the WALOOP marketing site.
+// Source: WALOOP_Website_Content_Context_Specification_DETAILED.md
 // Keeping copy here (rather than scattered in components) makes it easy to edit later.
+
+import { platformAreas, platformHref } from "@/lib/platform";
+import { solutions } from "@/lib/solutions";
+import { industries } from "@/lib/industries";
+
+// ───────────────────────────── Brand foundation (§1, §60)
 
 export const siteConfig = {
   name: "WALOOP",
   tagline: "Built on Trust. Driven by AI.",
-  domain: "waloop.ai",
+  coreMessage: "Connect. Automate. Engage. Grow.",
+  alternativeHeadline: "Turn Every Customer Conversation Into a Connected Business Journey.",
   description:
-    "Enterprise-grade communications platform powering WhatsApp Business API, RCS, Bulk SMS, IVR and AI Voice Bots for 500+ brands.",
-  foundedYear: 2015,
-  hq: "Gujarat, India",
-  teamSize: "50+",
+    "WALOOP helps businesses communicate with customers, organize customer data, automate repetitive processes, create interactive experiences, and build AI-powered customer journeys from one platform.",
+  supportingStatement:
+    "WALOOP brings conversations, CRM, chatbots, automation, WhatsApp experiences, payments, dynamic experiences, and AI together so businesses can build connected customer journeys from one platform.",
+  website: "https://www.waloop.in",
+  websiteLabel: "www.waloop.in",
+  appUrl: "https://app.waloop.in",
+  appLabel: "app.waloop.in",
   email: "official.waloop@gmail.com",
-  phone: "+91 87580 18050",
-  whatsapp: "+91 87584 08987",
-  whatsappLink: "https://wa.me/918758408987",
-  rating: "4.8/5",
+  phone: "+91 87584 08987",
+  phoneLink: "tel:+918758408987",
+  whatsapp: "+91 87580 18450",
+  whatsappLink: "https://wa.me/918758018450",
 };
 
-export type NavLink = {
-  label: string;
-  href: string;
-  description?: string;
-  tag?: string;
+export function whatsappMessageLink(text: string) {
+  return `${siteConfig.whatsappLink}?text=${encodeURIComponent(text)}`;
+}
+
+/** Primary / secondary CTAs (§3). */
+export const ctas = {
+  getStarted: { label: "Get Started", href: siteConfig.appUrl },
+  bookDemo: { label: "Book a Demo", href: "/demo" },
+  talkToSales: { label: "Talk to Sales", href: "/contact" },
+  talkToWaloop: { label: "Talk to WALOOP", href: "/contact" },
 };
+
+/** §1 Brand promise. */
+export const brandPromise = [
+  { icon: "Plug", title: "Connect", description: "Bring supported channels together." },
+  { icon: "ScanSearch", title: "Understand", description: "Organize conversations and customer information." },
+  { icon: "Workflow", title: "Automate", description: "Turn repetitive processes into workflows." },
+  { icon: "Sparkles", title: "Engage", description: "Create useful and personalized customer experiences." },
+  { icon: "BarChart3", title: "Measure", description: "Understand activity and improve customer journeys." },
+];
+
+// ───────────────────────────── Navigation (§3)
+
+export type NavLink = { label: string; href: string; description?: string; icon?: string };
 
 export type NavGroup = {
   label: string;
   href: string;
-  columns: {
-    heading: string;
-    links: NavLink[];
-  }[];
-  highlight?: {
-    badge: string;
-    title: string;
-    description: string;
-    cta: string;
-    href: string;
-  };
+  columns: { heading: string; links: NavLink[] }[];
+  highlight?: { badge: string; title: string; description: string; cta: string; href: string };
 };
 
-export const navGroups: NavGroup[] = [
+export type NavEntry = NavGroup | NavLink;
+
+export function isNavGroup(entry: NavEntry): entry is NavGroup {
+  return "columns" in entry;
+}
+
+const platformLink = (slug: string): NavLink => {
+  const area = platformAreas.find((a) => a.slug === slug)!;
+  return { label: area.name, href: platformHref(area.slug), description: area.short, icon: area.icon };
+};
+
+export const mainNav: NavEntry[] = [
   {
-    label: "Products",
-    href: "/products",
+    label: "Platform",
+    href: "/platform",
     columns: [
       {
-        heading: "AI Products",
-        links: [
-          {
-            label: "AI Voice Agent",
-            href: "/products/ai-voice-agent",
-            description: "Automate customer calls with a human-like AI voice assistant.",
-          },
-          {
-            label: "WhatsApp AI Chatbot",
-            href: "/products/whatsapp-ai-chatbot",
-            description: "AI-powered conversations natively inside WhatsApp.",
-          },
-          {
-            label: "Voice AI",
-            href: "/products/voice-ai",
-            description: "Speech recognition, NLU and natural voice synthesis engine.",
-          },
-          {
-            label: "Conversational AI Platform",
-            href: "/products/conversational-ai-platform",
-            description: "One unified WALOOP platform for AI agents & voice.",
-          },
-        ],
+        heading: "Connect & Engage",
+        links: ["channels", "crm", "chatbots", "automations", "whatsapp-mini-apps"].map(platformLink),
       },
       {
-        heading: "Core Channels",
-        links: [
-          {
-            label: "WhatsApp Business API",
-            href: "/products/whatsapp-business-api",
-            description: "Official Meta-verified WhatsApp channel with broadcasts and Flows.",
-          },
-          {
-            label: "RCS Business Messaging",
-            href: "/products/rcs-messaging",
-            description: "Interactive, rich messaging for a modern mobile customer experience.",
-          },
-          {
-            label: "Bulk SMS Gateway",
-            href: "/products/bulk-sms-gateway",
-            description: "Send personalized SMS to large audiences, fast and reliably.",
-          },
-          {
-            label: "WhatsApp Workflow Builder",
-            href: "/products/whatsapp-workflow-builder",
-            description: "No-code automation builder for WhatsApp journeys.",
-          },
-          {
-            label: "Smart Voice & IVR",
-            href: "/products/smart-voice-ivr",
-            description: "Multi-level IVR, AI voice bots, and intelligent call routing.",
-          },
-          {
-            label: "Missed Call Service",
-            href: "/products/missed-call-service",
-            description: "Zero-cost lead capture with sub-500ms CRM webhooks.",
-          },
-          {
-            label: "Webhook Engine",
-            href: "/products/webhook-engine",
-            description: "Real-time event delivery with retries, HMAC security, and replay.",
-          },
-        ],
+        heading: "Convert & Grow",
+        links: ["payments", "dynamic-experiences", "ai", "analytics", "workspace"].map(platformLink),
       },
     ],
     highlight: {
-      badge: "New Feature",
-      title: "GenAI Assistant 2.0",
-      description: "50% faster responses with enhanced context retention for enterprise support.",
-      cta: "Explore capabilities",
-      href: "/#ai-suite",
+      badge: "Platform overview",
+      title: "One connected platform",
+      description: "See how every WALOOP capability connects across the customer journey.",
+      cta: "Explore the platform",
+      href: "/platform",
     },
   },
   {
-    label: "Integrations",
-    href: "/integrations",
+    label: "Solutions",
+    href: "/solutions",
     columns: [
       {
-        heading: "CRM & Sales",
+        heading: "Grow",
+        links: solutions.slice(0, 4).map((s) => ({ label: s.name, href: `/solutions/${s.slug}`, description: s.short, icon: s.icon })),
+      },
+      {
+        heading: "Operate",
+        links: solutions.slice(4).map((s) => ({ label: s.name, href: `/solutions/${s.slug}`, description: s.short, icon: s.icon })),
+      },
+    ],
+    highlight: {
+      badge: "Use cases",
+      title: "See complete customer journeys",
+      description: "Lead generation, support, e-commerce, appointments and more — step by step.",
+      cta: "View use cases",
+      href: "/use-cases",
+    },
+  },
+  {
+    label: "Industries",
+    href: "/industries",
+    columns: [
+      {
+        heading: "Industries",
+        links: industries.slice(0, 4).map((i) => ({ label: i.name, href: `/industries/${i.slug}`, description: i.short, icon: i.icon })),
+      },
+      {
+        heading: " ",
+        links: industries.slice(4).map((i) => ({ label: i.name, href: `/industries/${i.slug}`, description: i.short, icon: i.icon })),
+      },
+    ],
+  },
+  { label: "AI", href: "/platform/ai" },
+  { label: "Integrations", href: "/integrations" },
+  { label: "Pricing", href: "/pricing" },
+  {
+    label: "Resources",
+    href: "/resources",
+    columns: [
+      {
+        heading: "Learn",
         links: [
-          { label: "Zoho CRM", href: "/integrations", description: "Seamless CRM synchronization." },
-          { label: "HubSpot", href: "/integrations", description: "Two-way CRM sync and marketing automation." },
-          { label: "Salesforce", href: "/integrations", description: "Enterprise CRM and support integration." },
+          { label: "Documentation", href: "/docs", description: "How each WALOOP capability works.", icon: "BookOpen" },
+          { label: "Guides", href: "/guides", description: "Step-by-step guides to build journeys.", icon: "Compass" },
+          { label: "Use Cases", href: "/use-cases", description: "Complete customer journeys, diagrammed.", icon: "Route" },
         ],
       },
       {
-        heading: "Growth & Engagement",
+        heading: "Help",
         links: [
-          { label: "MoEngage", href: "/integrations", description: "Marketing automation & analytics." },
-          { label: "WebEngage", href: "/integrations", description: "User engagement platform." },
-          { label: "CleverTap", href: "/integrations", description: "Customer retention platform." },
+          { label: "FAQ", href: "/faq", description: "Answers about WALOOP, plans and features.", icon: "CircleHelp" },
+          { label: "Blog", href: "/blog", description: "Insights and product updates.", icon: "Newspaper" },
+          { label: "Support", href: "/support", description: "Get help from the WALOOP team.", icon: "LifeBuoy" },
         ],
       },
     ],
   },
   {
     label: "Company",
-    href: "/#about",
+    href: "/about",
     columns: [
       {
-        heading: "Our Company",
+        heading: "Company",
         links: [
-          { label: "About Us", href: "/about", description: "Our mission, values, and journey since 2015." },
-          { label: "Careers", href: "/careers", description: "Join our team of communication and AI experts." },
-          { label: "Contact Us", href: "/contact", description: "Reach our enterprise support and sales team." },
+          { label: "About WALOOP", href: "/about", description: "Built to connect the modern customer journey.", icon: "Building2" },
+          { label: "Contact", href: "/contact", description: "Talk to the WALOOP team.", icon: "Mail" },
+          { label: "Pricing", href: "/pricing", description: "Starter, Growth and Enterprise plans.", icon: "Tag" },
         ],
       },
       {
-        heading: "Resources",
+        heading: "Get started",
         links: [
-          { label: "FAQ", href: "/#faq", description: "Fast answers about DLT, portals, and setup." },
-          { label: "Blog", href: "/blog", description: "Latest insights, product updates, and articles." },
+          { label: "Book a Demo", href: "/demo", description: "See one continuous customer journey.", icon: "CalendarCheck" },
+          { label: "Open the App", href: siteConfig.appUrl, description: siteConfig.appLabel, icon: "LogIn" },
         ],
       },
     ],
   },
 ];
 
-export type SimpleNavLink = { label: string; href: string };
+// ───────────────────────────── Footer (§61)
 
-export const simpleNavLinks: SimpleNavLink[] = [
-  { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Plugin", href: "/#integrations" },
-  { label: "Compliance", href: "/#faq" },
-];
-
-export const productNavLinks = [
-  { label: "AI Voice Agent", href: "/products/ai-voice-agent" },
-  { label: "WhatsApp AI Chatbot", href: "/products/whatsapp-ai-chatbot" },
-  { label: "Voice AI", href: "/products/voice-ai" },
-  { label: "Conversational AI Platform", href: "/products/conversational-ai-platform" },
-  { label: "WhatsApp Workflow Builder", href: "/products/whatsapp-workflow-builder" },
-];
-
-export const aiSuite = [
-  {
-    title: "AI Agent",
-    tag: "BUILD · DEPLOY",
-    description:
-      "Build and deploy autonomous agents that handle support, sales, and follow-ups across every channel — no code required.",
-    icon: "Bot",
-  },
-  {
-    title: "AI Chatbot",
-    tag: "CONVERSE · ENGAGE",
-    description:
-      "Converse naturally on WhatsApp, RCS and web chat — with context carried across the whole conversation, not just one turn.",
-    icon: "MessageCircle",
-  },
-  {
-    title: "Knowledge Base",
-    tag: "DOCS · TRAIN",
-    description:
-      "Feed your docs, tickets and product data into a RAG-powered base so every AI answer is grounded in your own content.",
-    icon: "BookOpen",
-  },
-  {
-    title: "Voice AI",
-    tag: "SPEECH · TTS · STT",
-    description:
-      "Natural text-to-speech and speech-to-text built for call flows — deploy voice bots that sound like a real agent.",
-    icon: "AudioLines",
-  },
-  {
-    title: "Prompt Studio",
-    tag: "DESIGN · TEST",
-    description:
-      "Design, version, and A/B test prompts visually — then push updates to live agents without a redeploy.",
-    icon: "Wand2",
-  },
-  {
-    title: "AI Workflow",
-    tag: "AUTOMATE · ORCHESTRATE",
-    description:
-      "Orchestrate multi-step automations that hand off between AI and human agents the moment a conversation needs one.",
-    icon: "Workflow",
-  },
-];
-
-export const businessSolutions = [
-  {
-    title: "Bulk Messaging",
-    description: "Send personalized broadcasts to your entire customer base in a single campaign.",
-    icon: "Send",
-  },
-  {
-    title: "Order Updates",
-    description: "Automated order and delivery status notifications, from checkout to doorstep.",
-    icon: "PackageCheck",
-  },
-  {
-    title: "Customer Support",
-    description: "Resolve queries seamlessly through one unified conversation inbox.",
-    icon: "Headset",
-  },
-  {
-    title: "Smart Chatbots",
-    description: "AI-powered bots that handle repetitive customer interactions automatically.",
-    icon: "Bot",
-  },
-  {
-    title: "Notifications",
-    description: "Instant alerts, reminders and confirmations delivered the moment they matter.",
-    icon: "BellRing",
-  },
-  {
-    title: "Payment Collection",
-    description: "Streamlined payment reminders and in-chat collection links.",
-    icon: "Wallet",
-  },
-  {
-    title: "External Integration",
-    description: "Connect WALOOP with your existing CRM, ERP and business systems.",
-    icon: "Plug",
-  },
-  {
-    title: "Team Collaboration",
-    description: "Multi-agent support with role-based access and shared visibility.",
-    icon: "Users",
-  },
-];
-
-export const products = [
-  {
-    eyebrow: "WhatsApp API Service Provider",
-    title: "WhatsApp Business API",
-    description: "Official Meta-partnered API for WhatsApp bulk broadcasting, chatbots & marketing.",
-    tags: ["WhatsApp API", "WhatsApp Marketing", "Chatbot"],
-    icon: "MessageSquare",
-  },
-  {
-    eyebrow: "RCS Service Provider",
-    title: "RCS Business Messaging",
-    description: "Branded messages with rich media, interactive buttons, and verified sender IDs.",
-    tags: ["Branded SMS", "Verified Sender", "Interactive"],
-    icon: "Sparkles",
-  },
-  {
-    eyebrow: "Best SMS Provider in India",
-    title: "Bulk SMS Gateway",
-    description: "Fastest bulk SMS provider for instant OTP delivery & marketing across India.",
-    tags: ["Bulk SMS India", "DLT API", "India Coverage"],
-    icon: "Send",
-  },
-  {
-    eyebrow: "Voice Chatbot Automation",
-    title: "AI Voice Bot",
-    description: "Multilingual AI voice bot for automated lead qualification and support calls.",
-    tags: ["Voice Chatbot", "AI Voice Bot", "Lead Gen"],
-    icon: "Phone",
-  },
-  {
-    eyebrow: "IVR Services in India",
-    title: "Cloud IVR System",
-    description: "Automated IVR virtual number with smart call routing & CRM integration.",
-    tags: ["IVR Number", "Call Routing", "Smart IVR"],
-    icon: "PhoneCall",
-  },
-  {
-    eyebrow: "Missed Call Alert Service",
-    title: "Missed Call Service",
-    description: "Zero-cost lead capture with instant missed call alerts and caller verification.",
-    tags: ["Missed Alert", "Verification", "Automated"],
-    icon: "PhoneMissed",
-  },
-  {
-    eyebrow: "Communications API Provider India",
-    title: "Webhook Engine",
-    description: "Connect any platform with secure WALOOP webhooks and instant JSON sync.",
-    tags: ["WALOOP Platform", "Secure", "Instant Sync"],
-    icon: "Webhook",
-  },
-  {
-    eyebrow: "WALOOP Analytics",
-    title: "Communication Analytics",
-    description: "Unified dashboard for live channel reports & marketing performance tracking.",
-    tags: ["Live Reports", "Marketing ROI", "CDR Logs"],
-    icon: "BarChart3",
-  },
-  {
-    eyebrow: "WALOOP Marketing Platform",
-    title: "WALOOP Campaigner",
-    description: "Scale broadcasts across WhatsApp, RCS, SMS & Voice from one workflow.",
-    tags: ["WALOOP Channels", "Automation", "Broadcast"],
-    icon: "Radio",
-  },
-];
-
-export const aiMetrics = [
-  { label: "Intent Recognition Accuracy", value: "98.9%" },
-  { label: "Real-time Response Latency", value: "<500ms" },
-  { label: "Global Language Support", value: "100+" },
-];
-
-export const aiFeatures = [
-  {
-    title: "Generative AI Conversations",
-    description: "Build LLM-powered bots with hyper-personalization and deep context awareness.",
-  },
-  {
-    title: "RAG-Powered Knowledge Base",
-    description: "Fetch instant, accurate answers from your enterprise documents and PDF data.",
-  },
-  {
-    title: "WALOOP AI Deployment",
-    description: "Deploy smart bots seamlessly across WhatsApp API, RCS messaging, and Web Chat.",
-  },
-];
-
-export const integrations = [
-  {
-    name: "MoEngage",
-    category: "Marketing & Engagement",
-    icon: "Megaphone",
-    description: "Native triggers and APIs for campaigns, journeys, and real-time automation across channels.",
-  },
-  {
-    name: "WebEngage",
-    category: "Marketing & Engagement",
-    icon: "Target",
-    description: "Unified message orchestration and personalization powered by smart automation workflows.",
-  },
-  {
-    name: "CleverTap",
-    category: "Marketing & Engagement",
-    icon: "BellRing",
-    description: "Engagement workflows and analytics integrated with WhatsApp, RCS, SMS, and Voice channels.",
-  },
-  {
-    name: "Zoho",
-    category: "CRM & Sales",
-    icon: "Building2",
-    description: "CRM integration for synchronized sales, support, and customer communication.",
-  },
-  {
-    name: "HubSpot",
-    category: "CRM & Sales",
-    icon: "Magnet",
-    description: "Two-way CRM sync for lead capture, deal updates, and marketing automation.",
-  },
-  {
-    name: "Salesforce",
-    category: "CRM & Sales",
-    icon: "Cloud",
-    description: "Enterprise CRM integration for unified customer records and support tickets.",
-  },
-  {
-    name: "Freshdesk",
-    category: "CRM & Sales",
-    icon: "LifeBuoy",
-    description: "Route conversations into your helpdesk with full context and message history.",
-  },
-  {
-    name: "Shopify",
-    category: "Commerce & Payments",
-    icon: "ShoppingBag",
-    description: "Sync orders, customers, and abandoned carts directly into WhatsApp and SMS flows.",
-  },
-  {
-    name: "Razorpay",
-    category: "Commerce & Payments",
-    icon: "CreditCard",
-    description: "Collect payments in-chat with real-time confirmation and instant receipts.",
-  },
-  {
-    name: "Zapier",
-    category: "Automation",
-    icon: "Zap",
-    description: "Connect WALOOP to 5,000+ apps and workflows without writing a line of code.",
-  },
-];
-
-export const deploySteps = [
-  {
-    step: "STEP 01",
-    title: "Developer-Friendly API",
-    description:
-      "Scalable REST APIs with production-ready SDKs for Node.js, Python, PHP & Java. Seamless Postman integration for fast testing.",
-    tags: ["REST API", "Web SDKs", "Postman Docs"],
-  },
-  {
-    step: "STEP 02",
-    title: "Automate Workflows",
-    description:
-      "Design complex IVR flows, real-time webhook endpoints, and WhatsApp templates using our no-code drag-and-drop builder.",
-    tags: ["No-Code IVR", "Real-Time Webhooks", "CRM Sync"],
-  },
-  {
-    step: "STEP 03",
-    title: "Scale & Monitor Live",
-    description:
-      "Go live instantly with high-throughput gateways. Monitor every message, call, and campaign through a unified WALOOP dashboard.",
-    tags: ["Live Tracking", "WALOOP CDR", "98.9% Uptime"],
-  },
-];
-
-export const industries = [
-  {
-    tab: "Education",
-    icon: "GraduationCap",
-    title: "EdTech & Smart Coaching",
-    category: "Education",
-    count: "120+ Institutions",
-    description:
-      "Automate admissions, fee reminders, and doubt-resolution on WhatsApp so counsellors spend time on enrolments, not repetitive replies.",
-    points: ["Automated admission & fee reminders", "WhatsApp doubt-resolution bots", "Parent-teacher broadcast updates"],
-  },
-  {
-    tab: "BFSI & Fintech",
-    icon: "Landmark",
-    title: "Secure Banking Solutions",
-    category: "BFSI & Fintech",
-    count: "80+ BFSI Clients",
-    description:
-      "Deliver RBI-compliant alerts, KYC nudges, and secure two-way support without ever leaving your customer's most-used app.",
-    points: ["Encrypted transaction alerts", "Automated KYC & document collection", "Fraud-alert escalation to voice IVR"],
-  },
-  {
-    tab: "Healthcare",
-    icon: "HeartPulse",
-    title: "Hospitals & Telemedicine",
-    category: "Healthcare",
-    count: "60+ Healthcare Units",
-    description:
-      "Reduce no-shows and staff load with automated appointment reminders, report delivery, and telemedicine check-ins.",
-    points: ["Appointment & prescription reminders", "Secure report delivery via WhatsApp", "AI Voice Agent for after-hours triage"],
-  },
-  {
-    tab: "E-Commerce",
-    icon: "ShoppingBag",
-    title: "Retail, D2C & Marketplaces",
-    category: "E-Commerce",
-    count: "150+ D2C Brands",
-    description:
-      "Recover abandoned carts, answer product questions instantly, and turn order updates into a two-way sales channel.",
-    points: ["Abandoned cart recovery flows", "Order & delivery status automation", "AI chatbot for product Q&A"],
-  },
-  {
-    tab: "Logistics",
-    icon: "Truck",
-    title: "Delivery & Supply Chain",
-    category: "Logistics",
-    count: "90+ Logistics Partners",
-    description:
-      "Keep drivers, dispatchers, and customers in sync with real-time tracking updates and automated exception alerts.",
-    points: ["Live shipment tracking updates", "Automated delay & exception alerts", "Driver coordination via bulk SMS"],
-  },
-  {
-    tab: "Travel & Hospitality",
-    icon: "Plane",
-    title: "Bookings & Guest Comms",
-    category: "Travel & Hospitality",
-    count: "50+ Travel Brands",
-    description:
-      "Confirm bookings, send itinerary updates, and handle guest requests in one thread — before, during, and after the stay.",
-    points: ["Instant booking confirmations", "Itinerary & check-in reminders", "In-stay guest request handling"],
-  },
-];
-
-export const trustPoints = [
-  { title: "Meta Business Solution Provider", description: "Verified partner status & credentials." },
-  { title: `ESTD. ${siteConfig.foundedYear} in ${siteConfig.hq}`, description: "Verified partner status & credentials." },
-  { title: `${siteConfig.teamSize} Communication Experts`, description: "Verified partner status & credentials." },
-  { title: "On-Premise & Cloud Deployment", description: "Verified partner status & credentials." },
-];
-
-export const stats = [
-  { value: "500+", label: "Enterprise Partnerships" },
-  { value: "10B+", label: "High-Volume Deliveries" },
-  { value: "99.99%", label: "Uptime SLA Guarantee" },
-  { value: "195+", label: "Global Connectivity" },
-];
-
-export const clientLogos = [
-  { name: "PizzaHub", category: "QSR & Food Tech" },
-  { name: "FirstKid", category: "E-commerce & Retail" },
-  { name: "PureEarth", category: "D2C & Personal Care" },
-  { name: "TrustBank", category: "BFSI & Digital Banking" },
-  { name: "MediGuard", category: "HealthTech & Pharmacy" },
-  { name: "Nimbly", category: "SaaS & Enterprise Tech" },
-];
-
-export const faqs = [
-  {
-    question: "What does WALOOP actually do?",
-    answer:
-      "WALOOP lets businesses embed real-time messaging, voice, and video into their own apps and workflows via APIs — without building telecom infrastructure themselves. It unifies WhatsApp, RCS, SMS, IVR, and AI voice into one connected platform.",
-  },
-  {
-    question: "How does the WhatsApp Business API work?",
-    answer:
-      "As an official Meta-partnered provider, WALOOP gives you API access to send template messages, run chatbots, and manage customer conversations at scale from a single dashboard, fully compliant with Meta's commerce and messaging policies.",
-  },
-  {
-    question: "What is DLT registration & compliance in India?",
-    answer:
-      "TRAI's Distributed Ledger Technology (DLT) framework requires Indian businesses to register sender IDs and message templates before sending SMS. WALOOP's DLT API and onboarding team handle registration and template approval for you.",
-  },
-  {
-    question: "How can we reduce Cash-on-Delivery (COD) RTO rates?",
-    answer:
-      "WALOOP's automated WhatsApp and voice confirmation workflows verify orders before dispatch, flag high-risk COD orders, and re-engage undecided customers — reducing return-to-origin rates for e-commerce and D2C brands.",
-  },
-  {
-    question: "Does WALOOP support on-premise deployments?",
-    answer:
-      "Yes. Alongside our secure cloud platform, WALOOP offers on-premise deployment of WhatsApp Business API, IVR and voice bot infrastructure for enterprises with strict data residency or compliance needs.",
-  },
-];
-
-export const footerLinks = {
-  coreSolutions: [
-    "WhatsApp Business",
-    "WhatsApp AI Chatbot",
-    "AI Voice Agent",
-    "RCS Messaging",
-    "Bulk SMS Gateway",
-    "IVR & Voice Call",
+export const footer = {
+  description:
+    "WALOOP helps businesses connect with customers, manage conversations, automate workflows, create interactive experiences, and build AI-powered customer journeys.",
+  cta: "Build Smarter Customer Journeys With WALOOP",
+  columns: [
+    { title: "Platform", links: platformAreas.map((a) => ({ label: a.name, href: platformHref(a.slug) })) },
+    { title: "Solutions", links: solutions.map((s) => ({ label: s.name, href: `/solutions/${s.slug}` })) },
+    { title: "Industries", links: industries.map((i) => ({ label: i.name, href: `/industries/${i.slug}` })) },
+    {
+      title: "Resources",
+      links: [
+        { label: "Documentation", href: "/docs" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Guides", href: "/guides" },
+        { label: "Use Cases", href: "/use-cases" },
+        { label: "Blog", href: "/blog" },
+        { label: "Support", href: "/support" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Pricing", href: "/pricing" },
+        { label: "Contact", href: "/contact" },
+        { label: "Book a Demo", href: "/demo" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Terms", href: "/terms" },
+      ],
+    },
   ],
-  company: ["About Us", "Careers", "Contact Us", "FAQ", "Blog", "Privacy Policy", "Terms"],
-  integrations: ["MoEngage", "WebEngage", "CleverTap", "Zoho CRM", "Zapier", "All Plugins"],
-  resources: ["WhatsApp API Docs", "Google Business", "TRAI (DLT)", "Meta Business Help", "RCS Standards", "Sitemap"],
+};
+
+// ───────────────────────────── Homepage (§5–8, §38–40)
+
+export const hero = {
+  headline: "The Intelligent Platform for Customer Conversations, Automation & Growth",
+  copy: [
+    "WALOOP brings WhatsApp, social channels, CRM, chatbots, automation, interactive experiences, payments, analytics, and AI together in one connected platform.",
+    "Build customer journeys that start with a message, continue through intelligent conversations and automated workflows, and lead to meaningful business actions.",
+  ],
+  featureStrip: [
+    "WhatsApp & Multi-Channel Engagement",
+    "Conversational CRM",
+    "Visual Chatbot Builder",
+    "Drag-and-Drop Automation",
+    "WhatsApp Mini-Apps",
+    "Payments",
+    "Dynamic Experiences",
+    "AI",
+    "Analytics",
+  ],
+};
+
+export const problem = {
+  heading: "Customer Conversations Shouldn't Live in Silos.",
+  copy: [
+    "Businesses often manage communication, customer data, campaigns, automation, support, payments, and reporting across different tools.",
+    "That can make it harder to maintain context between a customer's conversation and the actions that follow.",
+    "WALOOP brings these capabilities together so teams can create connected customer journeys.",
+  ],
+  silos: ["Messaging Tool", "CRM", "Automation Tool", "Payment Tool", "Support Tool", "Analytics"],
+};
+
+export const platformOverview = {
+  heading: "Everything Your Customer Journey Needs. In One Platform.",
+  intro:
+    "From the first customer message to lead management, sales conversations, support, payment, follow-up, and analytics, WALOOP provides connected capabilities for the customer journey.",
+};
+
+/** §38 Why WALOOP. */
+export const whyWaloop = {
+  heading: "One Connected Platform for Modern Customer Engagement",
+  items: [
+    { icon: "Layers", title: "One Platform", description: "Bring communication, CRM, automation, and customer experiences into one environment." },
+    { icon: "MessagesSquare", title: "Multi-Channel", description: "Manage supported communication channels from one workspace." },
+    { icon: "Workflow", title: "Visual Automation", description: "Build structured workflows visually." },
+    { icon: "Contact", title: "Conversational CRM", description: "Keep conversations and customer information connected." },
+    { icon: "Smartphone", title: "Interactive Experiences", description: "Create supported WhatsApp interactive journeys." },
+    { icon: "CreditCard", title: "Payments", description: "Connect payment-related actions to customer journeys." },
+    { icon: "BrainCircuit", title: "AI", description: "Use business content as the foundation for supported AI experiences." },
+    { icon: "Users", title: "Team Collaboration", description: "Organize departments, teams, roles, and permissions." },
+    { icon: "BarChart3", title: "Analytics", description: "Monitor available customer engagement and workflow activity." },
+  ],
+};
+
+/** §39–40 How WALOOP works. */
+export const howItWorks = [
+  { step: "01", title: "Connect", description: "Connect supported channels and services." },
+  { step: "02", title: "Organize", description: "Manage contacts, customer information, teams, and departments." },
+  { step: "03", title: "Build", description: "Create chatbots, workflows, campaigns, Mini-Apps, and dynamic experiences." },
+  { step: "04", title: "Engage", description: "Communicate with customers through supported channels." },
+  { step: "05", title: "Automate", description: "Trigger workflows and repetitive actions." },
+  { step: "06", title: "Convert", description: "Move customers toward supported business actions." },
+  { step: "07", title: "Support", description: "Route conversations and requests to the appropriate team." },
+  { step: "08", title: "Measure", description: "Use available analytics and activity data." },
+];
+
+/** §67 Capability-based trust section. */
+export const trust = {
+  heading: "Built for Connected Customer Operations",
+  description:
+    "WALOOP is Meta Verified and gives teams the capabilities they need to run customer operations from one place.",
+  capabilities: [
+    { icon: "Inbox", title: "Centralized conversations" },
+    { icon: "Database", title: "Structured customer data" },
+    { icon: "Workflow", title: "Visual workflows" },
+    { icon: "ShieldCheck", title: "Team permissions" },
+    { icon: "Plug", title: "Supported integrations" },
+    { icon: "BrainCircuit", title: "AI-ready customer experiences" },
+  ],
+};
+
+// ───────────────────────────── FAQ (§57)
+
+export type Faq = { question: string; answer: string };
+
+export const faqs: Faq[] = [
+  {
+    question: "What is WALOOP?",
+    answer:
+      "WALOOP is a customer engagement and business automation platform that connects supported communication channels, CRM, chatbots, automation, interactive experiences, payments, dynamic content, analytics, and AI capabilities.",
+  },
+  {
+    question: "Is WALOOP only for WhatsApp?",
+    answer:
+      "No. WhatsApp is an important supported channel, but WALOOP is a broader customer engagement platform with additional supported channels and business capabilities.",
+  },
+  {
+    question: "Which channels are supported?",
+    answer:
+      "WALOOP identifies WhatsApp, Instagram, Facebook, and RCS as supported channel categories. The exact capabilities available for each channel depend on the active product configuration.",
+  },
+  { question: "Can I build chatbots?", answer: "Yes. WALOOP includes a visual chatbot/flow builder for creating supported conversation journeys." },
+  {
+    question: "Do I need to code to create a chatbot?",
+    answer: "The visual builder is designed to let business teams create structured conversation flows without manually coding every interaction.",
+  },
+  {
+    question: "Can I automate business processes?",
+    answer: "Yes. WALOOP includes a visual automation/workflow builder for supported triggers, conditions, actions, data, and integrations.",
+  },
+  {
+    question: "Can I use WALOOP as a CRM?",
+    answer:
+      "WALOOP includes CRM capabilities such as contacts, conversations, boards, data stores, segments, campaigns, canned replies, triggers, imports, and exports.",
+  },
+  {
+    question: "Can WALOOP collect customer information?",
+    answer: "Supported chatbot, CRM, Mini-App, and workflow features can be used to capture structured information.",
+  },
+  {
+    question: "Can I create WhatsApp interactive experiences?",
+    answer: "WALOOP includes WhatsApp Mini-App / Flow capabilities for supported interactive journeys.",
+  },
+  {
+    question: "Can I connect payments?",
+    answer: "WALOOP includes payment orders, payment gateways, and payment automation capabilities for supported configurations.",
+  },
+  { question: "Can I create personalized PDFs or images?", answer: "WALOOP includes Dynamic Experience capabilities for image and PDF experiences." },
+  {
+    question: "Can AI use my business information?",
+    answer:
+      "The AI Dashboard is designed around training AI on relevant business content. The exact supported content sources and processing behaviour are documented according to the current implementation.",
+  },
+  { question: "Can teams work together?", answer: "WALOOP includes team management, roles, permissions, and department-oriented capabilities." },
+  {
+    question: "Can I manage customer support?",
+    answer:
+      "Yes. WALOOP provides live conversations, canned replies, department organization, CRM information, chatbots, and automation capabilities that can support customer service workflows.",
+  },
+  { question: "Does WALOOP have analytics?", answer: "WALOOP includes analytics areas for supported chatbot, automation, and broader platform activity." },
+  { question: "What are the current plans?", answer: "Starter is ₹15,000/year, Growth is ₹30,000/year, and Enterprise is custom pricing." },
+  {
+    question: "Are third-party charges included?",
+    answer:
+      "No. Applicable provider, usage, payment gateway, and WhatsApp/Meta charges are separate from the WALOOP subscription.",
+  },
+];
+
+/** Shorter list for the homepage. */
+export const homeFaqs: Faq[] = [faqs[0], faqs[1], faqs[2], faqs[4], faqs[6], faqs[9], faqs[11], faqs[15], faqs[16]];
+
+// ───────────────────────────── CTA library (§58)
+
+export const ctaLibrary = {
+  journeys: {
+    heading: "Ready to Build Better Customer Journeys?",
+    description: "Bring conversations, CRM, automation, payments, and AI together with WALOOP.",
+    cta: ctas.getStarted,
+  },
+  automate: {
+    heading: "Automate the Work. Personalize the Experience.",
+    description: "Build connected customer workflows with WALOOP.",
+    cta: ctas.bookDemo,
+  },
+  messaging: {
+    heading: "Your Customers Are Already Messaging. Make Every Conversation Count.",
+    description: "Connect supported channels and create structured customer experiences.",
+    cta: { label: "Start With WALOOP", href: siteConfig.appUrl },
+  },
+  next: {
+    heading: "Build Your Next Customer Journey With WALOOP",
+    description: "Connect. Automate. Engage.",
+    cta: ctas.getStarted,
+  },
 };

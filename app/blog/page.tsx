@@ -1,45 +1,49 @@
 import type { Metadata } from "next";
-import { PenLine } from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import Link from "next/link";
+import { ArrowRight, PenLine } from "lucide-react";
+import { PageHero } from "@/components/sections/PageHero";
+import { Section } from "@/components/sections/Section";
+import { CTASection } from "@/components/sections/CTASection";
 import { Reveal } from "@/components/ui/Reveal";
-import { ProductCTA } from "@/components/product/ProductCTA";
-import { hero, comingSoon, closingCta } from "@/lib/products/blog";
+import { comingSoon, hero, topics } from "@/lib/products/blog";
+import { ctas } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Blog — WALOOP",
-  description:
-    "Product updates, engineering deep-dives, and communication-industry insights from the team building WALOOP's platform.",
+  title: "WALOOP Blog | Customer Engagement, WhatsApp Automation & AI",
+  description: hero.description,
 };
 
 export default function BlogPage() {
   return (
     <>
-      <section className="relative overflow-hidden py-20 sm:py-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-hero-glow"
-        />
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow={hero.badge} title={hero.title} description={hero.description} tagline={hero.tagline} />
-        </div>
-      </section>
+      <PageHero eyebrow={hero.badge} icon="Newspaper" title={hero.title} description={hero.description} primary={{ label: "Read the Guides", href: "/guides" }} secondary={null} />
 
-      <section className="relative py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <Reveal className="flex flex-col items-center gap-4 text-center">
-            <PenLine className="h-8 w-8 text-brand-green" />
-            <h2 className="text-balance font-sans text-2xl font-semibold text-text sm:text-3xl">{comingSoon.heading}</h2>
-            <p className="max-w-xl text-pretty text-base text-text-muted">{comingSoon.description}</p>
-          </Reveal>
+      <Section size="narrow">
+        <Reveal className="flex flex-col items-center gap-4 text-center">
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gradient text-white">
+            <PenLine className="h-6 w-6" />
+          </span>
+          <h2 className="font-heading text-2xl font-bold text-text sm:text-3xl">{comingSoon.heading}</h2>
+          <p className="max-w-xl text-base text-text-muted">{comingSoon.description}</p>
+        </Reveal>
+        <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {topics.map((t) => (
+            <Link
+              key={t.title}
+              href={t.href}
+              className="group flex items-center justify-between gap-3 rounded-2xl border border-border bg-surface p-4 hover:border-brand-blue/40"
+            >
+              <span>
+                <span className="block font-heading text-sm font-bold text-text">{t.title}</span>
+                <span className="block text-xs text-text-muted">Meanwhile: {t.hrefLabel}</span>
+              </span>
+              <ArrowRight className="h-4 w-4 text-text-soft transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      <ProductCTA
-        heading={closingCta.heading}
-        description={closingCta.description}
-        primaryCta={closingCta.primaryCta}
-        secondaryCta={closingCta.secondaryCta}
-      />
+      <CTASection heading="Stay in the Loop" description="Follow WALOOP's updates and explore the platform while our first articles come together." primary={ctas.getStarted} />
     </>
   );
 }

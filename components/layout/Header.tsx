@@ -2,17 +2,18 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
-import { MegaMenu } from "@/components/layout/MegaMenu";
+import { MegaMenu, NavIcon } from "@/components/layout/MegaMenu";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Button } from "@/components/ui/Button";
-import { SquareDotFrame } from "@/components/ui/SquareDotFrame";
-import { navGroups, simpleNavLinks } from "@/lib/content";
+import { ctas, isNavGroup, mainNav, siteConfig } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [mobileGroup, setMobileGroup] = React.useState<string | null>(null);
@@ -20,7 +21,7 @@ export function Header() {
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -28,47 +29,53 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-colors duration-300",
-        scrolled ? "border-border bg-bg/95 backdrop-blur-lg" : "border-border bg-bg",
+        scrolled ? "border-border bg-bg/90 backdrop-blur-lg" : "border-transparent bg-bg",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-stretch justify-between">
-        <SquareDotFrame className="flex items-center border-r border-border pl-4 pr-6 sm:pl-6">
-          <Logo />
-        </SquareDotFrame>
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Logo />
 
-        <nav className="hidden flex-1 items-center justify-center gap-2 lg:flex">
-          {navGroups.map((group) => (
-            <MegaMenu key={group.label} group={group} />
-          ))}
-          {simpleNavLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="relative px-3.5 py-2 font-heading text-xs font-semibold uppercase tracking-wide text-text transition-colors after:absolute after:bottom-1 after:left-3.5 after:h-px after:w-0 after:bg-brand-green after:transition-all after:duration-300 hover:after:w-[calc(100%-1.75rem)]"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav aria-label="Main" className="hidden min-w-0 flex-1 items-center justify-center gap-0 xl:flex">
+          {mainNav.map((entry) =>
+            isNavGroup(entry) ? (
+              <MegaMenu key={entry.label} group={entry} />
+            ) : (
+              <Link
+                key={entry.label}
+                href={entry.href}
+                className={cn(
+                  "rounded-lg px-2.5 py-2 font-heading text-[13px] font-semibold text-text transition-colors hover:bg-surface-alt hover:text-brand-green-deep",
+                  pathname === entry.href && "text-brand-green-deep",
+                )}
+              >
+                {entry.label}
+              </Link>
+            ),
+          )}
         </nav>
 
-        <SquareDotFrame className="hidden items-center gap-4 border-l border-border pl-6 pr-4 lg:flex sm:pr-6">
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
           <ThemeToggle />
           <Link
-            href="/login"
-            className="font-heading text-xs font-semibold uppercase tracking-wide text-text-muted transition-colors hover:text-text"
+            href={siteConfig.appUrl}
+            className="font-heading text-[13px] font-semibold text-text-muted transition-colors hover:text-text"
           >
             Login
           </Link>
-          <Button as="a" href="/#demo" variant="primary" size="sm">
-            Request Demo
+          <Button as="a" href={ctas.bookDemo.href} variant="secondary" size="sm">
+            {ctas.bookDemo.label}
           </Button>
-        </SquareDotFrame>
+          <Button as="a" href={ctas.getStarted.href} variant="brand" size="sm">
+            {ctas.getStarted.label}
+          </Button>
+        </div>
 
-        <div className="flex items-center gap-2 border-l border-border pl-4 pr-4 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <ThemeToggle />
           <button
             type="button"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
             className="btn-soft-dark flex h-10 w-10 items-center justify-center rounded-btn"
           >
@@ -84,67 +91,74 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-border bg-bg lg:hidden"
+            className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-bg xl:hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-4">
-              {navGroups.map((group) => (
-                <div key={group.label} className="border-b border-border/70 last:border-none">
-                  <button
-                    type="button"
-                    onClick={() => setMobileGroup(mobileGroup === group.label ? null : group.label)}
-                    className="flex w-full items-center justify-between py-3 text-left font-heading text-sm font-semibold uppercase tracking-wide text-text"
-                  >
-                    {group.label}
-                    <ChevronDown
-                      className={cn("h-4 w-4 transition-transform", mobileGroup === group.label && "rotate-180")}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {mobileGroup === group.label && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="flex flex-col gap-3 pb-4 pl-2">
-                          {group.columns.flatMap((c) => c.links).map((link) => (
-                            <Link
-                              key={link.label}
-                              href={link.href}
-                              onClick={() => setMobileOpen(false)}
-                              className="text-sm text-text-muted"
-                            >
-                              {link.label}
+            <nav
+              aria-label="Mobile"
+              className="flex flex-col px-4 py-3"
+              onClick={(e) => {
+                if ((e.target as HTMLElement).closest("a")) setMobileOpen(false);
+              }}
+            >
+              {mainNav.map((entry) =>
+                isNavGroup(entry) ? (
+                  <div key={entry.label} className="border-b border-border/70">
+                    <button
+                      type="button"
+                      onClick={() => setMobileGroup(mobileGroup === entry.label ? null : entry.label)}
+                      aria-expanded={mobileGroup === entry.label}
+                      className="flex w-full items-center justify-between py-3.5 text-left font-heading text-[15px] font-semibold text-text"
+                    >
+                      {entry.label}
+                      <ChevronDown className={cn("h-4 w-4 transition-transform", mobileGroup === entry.label && "rotate-180")} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileGroup === entry.label && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="flex flex-col gap-1 pb-3">
+                            <Link href={entry.href} className="px-2 py-1.5 text-sm font-semibold text-brand-green-deep">
+                              {entry.label} overview →
                             </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-              <div className="flex flex-col gap-1 border-b border-border/70 py-2">
-                {simpleNavLinks.map((link) => (
+                            {entry.columns
+                              .flatMap((c) => c.links)
+                              .map((link) => (
+                                <Link key={link.label} href={link.href} className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-text-muted">
+                                  <NavIcon name={link.icon} className="h-4 w-4 text-brand-green-deep" />
+                                  {link.label}
+                                </Link>
+                              ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
                   <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="py-1.5 font-heading text-sm font-semibold uppercase tracking-wide text-text"
+                    key={entry.label}
+                    href={entry.href}
+                    className="border-b border-border/70 py-3.5 font-heading text-[15px] font-semibold text-text"
                   >
-                    {link.label}
+                    {entry.label}
                   </Link>
-                ))}
-              </div>
-              <div className="mt-4 flex flex-col gap-2">
-                <Button as="a" href="/login" variant="secondary" size="sm">
-                  Login
+                ),
+              )}
+              <div className="mt-4 grid grid-cols-2 gap-2 pb-2">
+                <Button as="a" href={ctas.bookDemo.href} variant="secondary" size="sm">
+                  {ctas.bookDemo.label}
                 </Button>
-                <Button as="a" href="/#demo" variant="primary" size="sm">
-                  Request Demo
+                <Button as="a" href={ctas.getStarted.href} variant="brand" size="sm">
+                  {ctas.getStarted.label}
                 </Button>
+                <Link href={siteConfig.appUrl} className="col-span-2 py-2 text-center text-sm font-semibold text-text-muted">
+                  Login to {siteConfig.appLabel}
+                </Link>
               </div>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

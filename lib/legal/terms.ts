@@ -1,6 +1,6 @@
 export const termsOfService = {
   title: "Terms of Service",
-  updated: "August 13, 2026",
+  updated: "October 3, 2026",
   intro:
     "These Terms of Service (\"Terms\") govern your access to and use of the WALOOP website and platform. By using our services, you agree to these Terms.",
   sections: [
@@ -8,25 +8,25 @@ export const termsOfService = {
       heading: "1. Using Our Services",
       body: [
         "You must provide accurate information when creating an account or requesting a demo, and you are responsible for maintaining the confidentiality of your account credentials.",
-        "You agree to use WALOOP's messaging, voice, and automation services in compliance with applicable laws and the policies of connected platforms, including Meta's WhatsApp Business Policy and India's TRAI/DLT regulations for commercial messaging.",
+        "You agree to use WALOOP's communication, automation, payment and AI capabilities in compliance with applicable laws and the policies of connected platforms, including Meta's WhatsApp Business policies and applicable regulations for commercial messaging.",
       ],
     },
     {
       heading: "2. Acceptable Use",
       body: [
-        "You may not use WALOOP to send unsolicited spam, unlawful, deceptive, or abusive content, or to violate the rights of any third party. We reserve the right to suspend accounts that violate these Terms or the policies of our messaging and telecom partners.",
+        "You may not use WALOOP to send unsolicited spam, unlawful, deceptive, or abusive content, or to violate the rights of any third party. We reserve the right to suspend accounts that violate these Terms or the policies of our communication and platform partners.",
       ],
     },
     {
       heading: "3. Service Availability",
       body: [
-        "We aim to maintain high platform availability in line with our published uptime targets, but the service is provided on an \"as available\" basis and may be affected by factors outside our control, including third-party carrier or Meta platform outages.",
+        "We aim to keep the platform reliably available, but the service is provided on an \"as available\" basis and may be affected by factors outside our control, including third-party provider or Meta platform outages.",
       ],
     },
     {
       heading: "4. Fees and Billing",
       body: [
-        "Fees for WALOOP's plans and usage-based charges (such as per-message or per-minute rates) are as agreed at signup or in your commercial agreement with us. Fees are billed in accordance with the payment terms provided during onboarding.",
+        "Fees for WALOOP's plans are as published on our Pricing page or agreed in your commercial agreement with us. Usage, provider, WhatsApp/Meta and payment gateway charges are separate from the WALOOP subscription where applicable. Fees are billed in accordance with the payment terms provided during onboarding.",
       ],
     },
     {

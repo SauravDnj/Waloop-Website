@@ -8,9 +8,12 @@ import { cn } from "@/lib/utils";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => setMounted(true), []);
+  // true on the client, false during SSR — avoids a theme-icon hydration mismatch
+  const mounted = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   const isDark = mounted && resolvedTheme === "dark";
 
@@ -49,7 +52,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       <motion.span
         animate={{ x: isDark ? 28 : 0 }}
         transition={{ type: "spring", stiffness: 500, damping: 32 }}
-        className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brand-green to-brand-lime text-white shadow-card"
+        className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-card"
       >
         <AnimatePresence mode="wait" initial={false}>
           {mounted && isDark ? (

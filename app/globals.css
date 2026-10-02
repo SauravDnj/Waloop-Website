@@ -3,83 +3,90 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Base surfaces — Agenio: white surfaces, hairline borders, light-gray alt tint */
+  /* Base surfaces — clean white SaaS surfaces with a cool blue-gray alt tint */
   --color-bg: #ffffff;
-  --color-bg-alt: #f3f4f6;
+  --color-bg-alt: #f4f7fb;
   --color-surface: #ffffff;
-  --color-surface-alt: #f3f4f6;
-  --color-border: rgba(3, 7, 18, 0.1);
+  --color-surface-alt: #eef3f9;
+  --color-border: rgba(11, 31, 77, 0.1);
 
   /* Text */
-  --color-text: #030712;
-  --color-text-muted: #6b7280;
-  --color-text-soft: #9199a3;
+  --color-text: #071330;
+  --color-text-muted: #55617a;
+  --color-text-soft: #8a94a8;
 
-  /* Brand — Agenio lime accent + dark charcoal soft-UI surfaces */
-  --color-brand-green: #98ff03; /* lime accent: icons, dots, underlines, dark-mode text */
-  --color-brand-green-dark: #181818; /* near-black, used for opaque "dark band" sections */
-  --color-brand-green-deep: #1f1f25; /* dark charcoal, used for light-mode text accents */
-  --color-brand-lime: #b2ff43; /* lighter lime, gradient partner */
+  /* Brand — WALOOP Infinity Connect palette (blue → cyan → green) */
+  --color-brand-blue: #0b5cff;
+  --color-brand-cyan: #07b6e8;
+  --color-brand-green: #14c95f; /* green accent: icons, dots, checks */
+  --color-brand-green-dark: #071330; /* deep navy, used for opaque "dark band" sections */
+  --color-brand-green-deep: #0b5cff; /* light-mode accent text (brand blue) */
+  --color-brand-lime: #6fe23a; /* light green, gradient partner */
 
-  --gradient-brand: linear-gradient(178.82deg, #b2ff43 1.01%, #98ff03 105.12%);
-  --gradient-ai: linear-gradient(135deg, #1f1f25 0%, #98ff03 100%);
-  --gradient-dark-btn: linear-gradient(137.66deg, #40454a 21.13%, #292c2e 80.53%);
-  --gradient-icon-lime: linear-gradient(178.82deg, #b2ff43 1.01%, #98ff03 105.12%);
+  --gradient-brand: linear-gradient(100deg, #0b5cff 0%, #07b6e8 48%, #14c95f 100%);
+  --gradient-ai: linear-gradient(120deg, #0b5cff 0%, #14c95f 100%);
+  --gradient-dark-btn: linear-gradient(137.66deg, #1b3170 21.13%, #0a1636 80.53%);
+  --gradient-icon-lime: linear-gradient(135deg, #0b5cff 0%, #07b6e8 50%, #14c95f 100%);
 
-  --color-hero-glow-1: rgba(152, 255, 3, 0.1);
-  --color-hero-glow-2: rgba(31, 31, 37, 0.06);
-  --color-section-tint: rgba(3, 7, 18, 0.03);
+  --color-hero-glow-1: rgba(11, 92, 255, 0.1);
+  --color-hero-glow-2: rgba(20, 201, 95, 0.09);
+  --color-section-tint: rgba(11, 92, 255, 0.025);
 
-  --shadow-soft: 0 4px 20px -8px rgba(15, 23, 42, 0.08);
-  --shadow-card: 0 1px 3px -1px rgba(15, 23, 42, 0.06);
-  --shadow-glow: 0 0 50px -12px rgba(152, 255, 3, 0.25);
-  --shadow-brand-glow: 0 8px 20px -8px rgba(152, 255, 3, 0.35);
+  --shadow-soft: 0 6px 24px -10px rgba(11, 31, 77, 0.14);
+  --shadow-card: 0 1px 3px -1px rgba(11, 31, 77, 0.08);
+  --shadow-glow: 0 0 50px -12px rgba(11, 92, 255, 0.3);
+  --shadow-brand-glow: 0 8px 20px -8px rgba(11, 92, 255, 0.4);
 
-  /* Soft-panel neumorphic recipe — pricing/FAQ/working-process/team-chip cards */
-  --panel-bg: linear-gradient(137.66deg, #f5f5f5 21.13%, #f2f2f2 80.53%);
-  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.6), inset 0px -5px 0px #e4e4e4,
-    inset 0px -6px 0px 1px #fafafa;
+  /* Soft-panel card recipe — pricing/FAQ/process/card surfaces */
+  --panel-bg: linear-gradient(137.66deg, #f8fafd 21.13%, #f2f5fa 80.53%);
+  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.7), inset 0px -4px 0px #e3e9f2,
+    inset 0px -5px 0px 1px #fafcff;
 
-  /* Dark soft-UI button recipe */
-  --shadow-btn: 0px 3px 3px rgba(0, 0, 0, 0.1), inset 0px 1px 0px rgba(255, 255, 255, 0.6),
-    inset 0px -3px 0px #1a1a1a, inset 0px -4px 0px 1px rgba(255, 255, 255, 0.1);
+  /* Dark navy soft-UI button recipe */
+  --shadow-btn: 0px 3px 6px rgba(11, 31, 77, 0.18), inset 0px 1px 0px rgba(255, 255, 255, 0.25),
+    inset 0px -3px 0px #050d24, inset 0px -4px 0px 1px rgba(255, 255, 255, 0.08);
 
-  --radius-card: 12px;
+  --radius-card: 14px;
   --radius-btn: 12px;
-  --radius-panel: 12px;
+  --radius-panel: 14px;
 }
 
 .dark {
-  --color-bg: #0a0a0a;
-  --color-bg-alt: #121212;
-  --color-surface: #121212;
-  --color-surface-alt: #1a1a1a;
-  --color-border: #292929;
+  --color-bg: #050a17;
+  --color-bg-alt: #091124;
+  --color-surface: #0b1429;
+  --color-surface-alt: #111c36;
+  --color-border: #1c2945;
 
-  --color-text: #fafafa;
-  --color-text-muted: #a3a3a3;
-  --color-text-soft: #737373;
+  --color-text: #f2f6ff;
+  --color-text-muted: #a3afc7;
+  --color-text-soft: #6f7b95;
 
-  --color-brand-green: #98ff03;
-  --color-brand-green-dark: #000000;
-  --color-brand-green-deep: #98ff03;
-  --color-brand-lime: #b2ff43;
+  --color-brand-blue: #4d8dff;
+  --color-brand-cyan: #2fd0ff;
+  --color-brand-green: #2ee57a;
+  --color-brand-green-dark: #02060f;
+  --color-brand-green-deep: #4fb8ff;
+  --color-brand-lime: #86f25a;
 
-  --color-hero-glow-1: rgba(152, 255, 3, 0.16);
-  --color-hero-glow-2: rgba(255, 255, 255, 0.05);
-  --color-section-tint: rgba(255, 255, 255, 0.03);
+  --gradient-brand: linear-gradient(100deg, #4d8dff 0%, #2fd0ff 48%, #2ee57a 100%);
+  --gradient-ai: linear-gradient(120deg, #4d8dff 0%, #2ee57a 100%);
 
-  --shadow-soft: 0 4px 24px -8px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 1px 3px -1px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 60px -12px rgba(152, 255, 3, 0.3);
-  --shadow-brand-glow: 0 8px 20px -8px rgba(152, 255, 3, 0.5);
+  --color-hero-glow-1: rgba(77, 141, 255, 0.18);
+  --color-hero-glow-2: rgba(46, 229, 122, 0.1);
+  --color-section-tint: rgba(77, 141, 255, 0.035);
 
-  --panel-bg: linear-gradient(137.66deg, #1c1c1c 21.13%, #161616 80.53%);
-  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.06), inset 0px -5px 0px #050505,
-    inset 0px -6px 0px 1px #0d0d0d;
+  --shadow-soft: 0 6px 28px -8px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 1px 3px -1px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 60px -12px rgba(77, 141, 255, 0.4);
+  --shadow-brand-glow: 0 8px 20px -8px rgba(47, 208, 255, 0.45);
 
-  --shadow-btn: 0px 3px 3px rgba(0, 0, 0, 0.3), inset 0px 1px 0px rgba(255, 255, 255, 0.08),
-    inset 0px -3px 0px #000000, inset 0px -4px 0px 1px rgba(255, 255, 255, 0.05);
+  --panel-bg: linear-gradient(137.66deg, #0e1830 21.13%, #0a1327 80.53%);
+  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.05), inset 0px -4px 0px #040914,
+    inset 0px -5px 0px 1px #0b1328;
+
+  --shadow-btn: 0px 3px 6px rgba(0, 0, 0, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.12),
+    inset 0px -3px 0px #020613, inset 0px -4px 0px 1px rgba(255, 255, 255, 0.05);
 }
 
 @theme inline {
@@ -93,6 +100,8 @@
   --color-text-muted: var(--color-text-muted);
   --color-text-soft: var(--color-text-soft);
 
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-cyan: var(--color-brand-cyan);
   --color-brand-green: var(--color-brand-green);
   --color-brand-green-dark: var(--color-brand-green-dark);
   --color-brand-green-deep: var(--color-brand-green-deep);
@@ -120,9 +129,14 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Slide-in reveal animations start offset sideways; clip (not hidden) keeps sticky working. */
+main {
+  overflow-x: clip;
+}
+
 ::selection {
-  background: var(--color-brand-green);
-  color: #06110c;
+  background: var(--color-brand-blue);
+  color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -139,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gradient-heading {
-  background: linear-gradient(137.66deg, #55595c 21.13%, #000000 80.53%);
+  background: linear-gradient(137.66deg, #24386b 21.13%, #050b1d 80.53%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -148,19 +162,19 @@ h1, h2, h3, h4, h5, h6 {
 :root.dark .text-gradient-heading,
 .dark .text-gradient-heading,
 .section-dark .text-gradient-heading {
-  background: linear-gradient(137.66deg, #ffffff 21.13%, #9199a3 80.53%);
+  background: linear-gradient(137.66deg, #ffffff 21.13%, #9fb0d1 80.53%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Small lime "eyebrow" indicator dot — Agenio tag/badge accent */
+/* Small brand-gradient "eyebrow" indicator dot — tag/badge accent */
 .dot-lime {
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 2px;
-  background: var(--color-brand-green);
+  background: var(--gradient-brand);
   flex: none;
 }
 
@@ -240,17 +254,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-dark {
-  --color-bg: #0a0a0a;
-  --color-bg-alt: #121212;
-  --color-surface: #121212;
-  --color-surface-alt: #1a1a1a;
-  --color-border: #292929;
-  --color-text: #fafafa;
-  --color-text-muted: #a3a3a3;
-  --color-text-soft: #737373;
+  --color-bg: #061031;
+  --color-bg-alt: #0a1638;
+  --color-surface: #0c1a40;
+  --color-surface-alt: #12224d;
+  --color-border: #22346a;
+  --color-text: #f2f6ff;
+  --color-text-muted: #b2bfdc;
+  --color-text-soft: #7d8bb0;
+  --color-brand-green-deep: #4fb8ff;
+  --color-brand-blue: #4d8dff;
+  --color-brand-cyan: #2fd0ff;
+  --color-brand-green: #2ee57a;
+  --panel-bg: linear-gradient(137.66deg, rgba(255, 255, 255, 0.06) 21.13%, rgba(255, 255, 255, 0.03) 80.53%);
+  --shadow-panel: inset 0px 1px 0px rgba(255, 255, 255, 0.06), inset 0px -4px 0px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 1px 3px -1px rgba(0, 0, 0, 0.5);
 
   background: var(--color-bg);
   color: var(--color-text);
+}
+
+/* Moving pulse along a vertical/horizontal flow connector */
+@keyframes flow-pulse-y {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(260%); opacity: 0; }
+}
+@keyframes flow-pulse-x {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(260%); opacity: 0; }
+}
+.animate-flow-y { animation: flow-pulse-y 2.2s ease-in-out infinite; }
+.animate-flow-x { animation: flow-pulse-x 2.2s ease-in-out infinite; }
+
+.bg-brand-gradient { background: var(--gradient-brand); }
+.border-brand-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    var(--gradient-brand) border-box;
 }
 
 @keyframes marquee {

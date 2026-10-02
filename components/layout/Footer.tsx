@@ -1,80 +1,73 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone, Twitter } from "lucide-react";
-import { Logo } from "@/components/layout/Logo";
-import { SquareDotFrame } from "@/components/ui/SquareDotFrame";
-import { footerLinks, siteConfig } from "@/lib/content";
-
-const knownLinks: Record<string, string> = {
-  "AI Voice Agent": "/products/ai-voice-agent",
-  "WhatsApp AI Chatbot": "/products/whatsapp-ai-chatbot",
-  "WhatsApp Business": "/products/whatsapp-business-api",
-  "RCS Messaging": "/products/rcs-messaging",
-  "Bulk SMS Gateway": "/products/bulk-sms-gateway",
-  "IVR & Voice Call": "/products/smart-voice-ivr",
-  "About Us": "/about",
-  Careers: "/careers",
-  "Contact Us": "/contact",
-  FAQ: "/#faq",
-  Blog: "/blog",
-  "Privacy Policy": "/privacy-policy",
-  Terms: "/terms",
-  MoEngage: "/integrations",
-  WebEngage: "/integrations",
-  CleverTap: "/integrations",
-  "Zoho CRM": "/integrations",
-  "All Plugins": "/integrations",
-};
-
-const columns: { title: string; items: string[] }[] = [
-  { title: "Core Solutions", items: footerLinks.coreSolutions },
-  { title: "Company", items: footerLinks.company },
-  { title: "Integrations", items: footerLinks.integrations },
-  { title: "Resources", items: footerLinks.resources },
-];
+import { ArrowRight, Globe, LayoutDashboard, Mail, Phone } from "lucide-react";
+import { BrandLockup } from "@/components/layout/Logo";
+import { MetaVerifiedBadge } from "@/components/brand/MetaVerifiedBadge";
+import { ChannelIcon } from "@/components/brand/ChannelIcon";
+import { Button } from "@/components/ui/Button";
+import { ctas, footer, siteConfig } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border bg-bg-alt">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
+    <footer className="border-t border-border bg-bg-alt">
+      {/* Footer CTA (§61) */}
+      <div className="border-b border-border">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center lg:px-8">
+          <div>
+            <p className="font-heading text-2xl font-bold text-text sm:text-3xl">
+              Build Smarter Customer Journeys With <span className="text-gradient-brand">WALOOP</span>
+            </p>
+            <p className="mt-2 text-sm text-text-muted">{siteConfig.coreMessage}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button as="a" href={ctas.bookDemo.href} variant="secondary">
+              {ctas.bookDemo.label}
+            </Button>
+            <Button as="a" href={ctas.getStarted.href} variant="brand" icon={<ArrowRight className="h-4 w-4" />}>
+              {ctas.getStarted.label}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-7">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
-            <Logo />
-            <p className="mt-3 text-sm font-semibold">
-              <span className="text-text">Built on Trust.</span> <span className="text-brand-green">Driven by AI.</span>
+            <Link href="/" aria-label="WALOOP home" className="inline-block">
+              <BrandLockup className="h-20" />
+            </Link>
+            <p className="mt-4 text-sm font-semibold">
+              <span className="text-brand-green-deep">Built on Trust.</span> <span className="text-brand-green">Driven by AI.</span>
             </p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-text-muted">
-              Enterprise-grade communications platform — empowering 500+ leaders with Official WhatsApp Business API, RCS
-              Messaging, Bulk SMS Gateway, and AI Voice Bots since {siteConfig.foundedYear}.
-            </p>
-            <div className="mt-5 flex flex-col gap-2 text-sm text-text-muted">
-              <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 hover:text-brand-green-deep dark:hover:text-brand-green">
-                <Mail className="h-4 w-4" /> {siteConfig.email}
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-text-muted">{footer.description}</p>
+            <MetaVerifiedBadge size="sm" className="mt-5" />
+
+            <div className="mt-6 flex flex-col gap-2.5 text-sm text-text-muted">
+              <a href={siteConfig.whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-text">
+                <ChannelIcon channel="whatsapp" className="h-4 w-4 text-[#25D366]" /> {siteConfig.whatsapp} (WhatsApp)
               </a>
-              <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-2 hover:text-brand-green-deep dark:hover:text-brand-green">
+              <a href={siteConfig.phoneLink} className="flex items-center gap-2 hover:text-text">
                 <Phone className="h-4 w-4" /> {siteConfig.phone}
               </a>
-              <a
-                href={siteConfig.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-brand-green-deep dark:hover:text-brand-green"
-              >
-                <MessageCircle className="h-4 w-4" /> {siteConfig.whatsapp} (WhatsApp)
+              <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 hover:text-text">
+                <Mail className="h-4 w-4" /> {siteConfig.email}
+              </a>
+              <a href={siteConfig.website} className="flex items-center gap-2 hover:text-text">
+                <Globe className="h-4 w-4" /> {siteConfig.websiteLabel}
+              </a>
+              <a href={siteConfig.appUrl} className="flex items-center gap-2 hover:text-text">
+                <LayoutDashboard className="h-4 w-4" /> {siteConfig.appLabel}
               </a>
             </div>
           </div>
 
-          {columns.map((col) => (
+          {footer.columns.map((col) => (
             <div key={col.title}>
-              <p className="mb-4 text-sm font-semibold text-text">{col.title}</p>
+              <p className="mb-4 font-heading text-sm font-bold text-text">{col.title}</p>
               <ul className="flex flex-col gap-2.5">
-                {col.items.map((item) => (
-                  <li key={item}>
-                    <Link
-                      href={knownLinks[item] ?? "/#contact"}
-                      className="text-sm text-text-muted transition-colors hover:text-brand-green-deep dark:hover:text-brand-green"
-                    >
-                      {item}
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-brand-green-deep">
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -84,28 +77,14 @@ export function Footer() {
         </div>
       </div>
 
-      <SquareDotFrame className="mx-4 flex items-center justify-center border-y border-border py-14 sm:mx-6 lg:mx-8">
-        <Logo className="[&_img]:h-12 [&_span]:text-4xl sm:[&_span]:text-6xl" />
-      </SquareDotFrame>
-
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-between gap-4 text-xs text-text-soft sm:flex-row">
-          <div className="flex items-center gap-3">
-            {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social link"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-muted transition-colors hover:border-brand-green hover:text-brand-green"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
-          <p className="order-first sm:order-none">
+      <div className="border-t border-border">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-text-soft sm:flex-row sm:px-6 lg:px-8">
+          <p>
             © {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved.
           </p>
-          <p>India&apos;s WALOOP Messaging Platform for WhatsApp API, RCS &amp; AI Voice Solutions.</p>
+          <p className="font-semibold">
+            {siteConfig.name} — {siteConfig.tagline}
+          </p>
         </div>
       </div>
     </footer>

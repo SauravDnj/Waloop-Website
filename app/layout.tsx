@@ -21,9 +21,31 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "WALOOP — AI-Driven Communications for WhatsApp, RCS, SMS & Voice",
+  metadataBase: new URL("https://www.waloop.in"),
+  title: "WALOOP | Customer Engagement, WhatsApp, CRM & AI Automation Platform",
   description:
-    "WALOOP is an enterprise-grade communications platform powering official WhatsApp Business API, RCS messaging, bulk SMS, IVR and AI voice bots for 500+ brands.",
+    "WALOOP brings WhatsApp, multi-channel communication, CRM, chatbots, automation, payments, interactive experiences, dynamic content, and AI together in one customer engagement platform.",
+  keywords: [
+    "WhatsApp business automation",
+    "WhatsApp CRM",
+    "WhatsApp chatbot",
+    "customer engagement platform",
+    "chatbot automation",
+    "business automation platform",
+    "conversational CRM",
+    "WhatsApp automation",
+    "WhatsApp Mini-App",
+    "AI customer engagement",
+  ],
+  applicationName: "WALOOP",
+  openGraph: {
+    type: "website",
+    siteName: "WALOOP",
+    title: "WALOOP — Built on Trust. Driven by AI.",
+    description:
+      "Connect. Automate. Engage. Grow. WALOOP brings customer conversations, CRM, chatbots, automation, interactive experiences, payments, dynamic content, analytics, and AI together in one connected platform.",
+    images: [{ url: "/brand/waloop-logo-light.png", width: 720, height: 447, alt: "WALOOP" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

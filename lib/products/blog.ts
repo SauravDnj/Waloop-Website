@@ -1,26 +1,24 @@
-// Content data for the /blog marketing page.
+// Content data for the /blog page.
 // There's no published content yet, so this is an honest "coming soon" state
 // rather than fabricated posts with invented authors, dates, or read times.
 
 export const hero = {
-  badge: "Insights",
+  badge: "Blog",
   title: "WALOOP Blog",
   description:
-    "Product updates, engineering deep-dives, and communication-industry insights from the team building WALOOP's platform.",
-  tagline: { lead: "Real updates.", emphasis: "No filler." },
+    "Ideas and product updates on customer engagement, WhatsApp automation, conversational CRM and AI — from the team building WALOOP.",
 };
 
 export const comingSoon = {
-  icon: "PenLine",
-  heading: "We're just getting started",
-  description:
-    "Check back soon for posts on communications infrastructure, WhatsApp automation, and conversational AI — we're writing our first set of articles now.",
+  heading: "Our first articles are on the way",
+  description: "We're writing about the topics below. Until they're published, these pages cover each one in depth.",
 };
 
-export const closingCta = {
-  heading: "Stay in the Loop",
-  description:
-    "Follow WALOOP's product updates and explore what we've already shipped while our first blog posts come together.",
-  primaryCta: { label: "Explore Products", href: "/products" },
-  secondaryCta: { label: "Contact Us", href: "/contact" },
-};
+export const topics = [
+  { title: "Building connected customer journeys", href: "/use-cases", hrefLabel: "Use cases" },
+  { title: "WhatsApp chatbots without code", href: "/platform/chatbots", hrefLabel: "Chatbots" },
+  { title: "Conversational CRM explained", href: "/platform/crm", hrefLabel: "CRM" },
+  { title: "Interactive WhatsApp Mini-Apps", href: "/platform/whatsapp-mini-apps", hrefLabel: "WhatsApp Mini-Apps" },
+  { title: "From conversation to payment", href: "/platform/payments", hrefLabel: "Payments" },
+  { title: "Training AI on your business content", href: "/platform/ai", hrefLabel: "AI" },
+];

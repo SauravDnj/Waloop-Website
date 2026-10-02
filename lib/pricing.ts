@@ -1,81 +1,79 @@
-// Content data for the /pricing page.
+// Content data for pricing (spec §36–37).
+
+import { siteConfig } from "@/lib/content";
 
 export const hero = {
   badge: "Pricing",
-  title: "Pricing that grows",
-  highlight: "with your business.",
+  title: "Choose the WALOOP Plan That Fits Your Business",
   description:
-    "Whether you're a solo team testing WhatsApp automation or an enterprise running voice, SMS, and RCS at scale — WALOOP has a plan built for you.",
-  tagline: { lead: "Simple plans.", emphasis: "No hidden fees." },
+    "Simple yearly plans for every stage — from a structured foundation for customer conversations to customized enterprise requirements.",
 };
 
 export type PricingPlan = {
   name: string;
+  /** Short label shown on the card (§37). */
+  label: string;
+  positioning: string;
   description: string;
-  monthlyPrice: number | null;
-  yearlyPrice: number | null;
+  price: string;
   priceSuffix: string;
-  badge?: string;
   highlighted?: boolean;
-  features: string[];
   cta: { label: string; href: string };
 };
 
 export const plans: PricingPlan[] = [
   {
-    name: "Launch",
-    description: "For solo sellers and small teams getting started with WhatsApp automation.",
-    monthlyPrice: 29,
-    yearlyPrice: 24,
-    priceSuffix: "/mo",
-    features: [
-      "1 WhatsApp Business number",
-      "1,000 conversations / month",
-      "Shared team inbox",
-      "Basic chatbot flows",
-      "Email support",
-    ],
-    cta: { label: "Get Started Free", href: "/signup" },
+    name: "Starter",
+    label: "Business Engagement Foundation",
+    positioning: "For businesses starting with customer engagement, communication, and automation.",
+    description:
+      "A starting plan for businesses that need a structured foundation for customer conversations and digital engagement.",
+    price: "₹15,000",
+    priceSuffix: "/ year",
+    cta: { label: "Get Started", href: siteConfig.appUrl },
   },
   {
-    name: "Sprint",
-    description: "For growing teams that want AI automation and campaign tools.",
-    monthlyPrice: 79,
-    yearlyPrice: 65,
-    priceSuffix: "/mo",
-    badge: "Most Popular",
+    name: "Growth",
+    label: "Connected Customer Journeys",
+    positioning:
+      "For growing businesses that need broader customer management, automation, campaign, and engagement capabilities.",
+    description:
+      "A broader platform option for businesses building more connected customer journeys and workflows.",
+    price: "₹30,000",
+    priceSuffix: "/ year",
     highlighted: true,
-    features: [
-      "Everything in Launch, plus:",
-      "3 WhatsApp Business numbers",
-      "10,000 conversations / month",
-      "AI Voice Agent + Chatbot",
-      "RCS & Bulk SMS gateway",
-      "Priority support",
-    ],
-    cta: { label: "Start Free Trial", href: "/signup" },
+    cta: { label: "Get Started", href: siteConfig.appUrl },
   },
   {
-    name: "Turbo",
-    description: "For teams that need custom integrations, security, and dedicated support.",
-    monthlyPrice: null,
-    yearlyPrice: null,
+    name: "Enterprise",
+    label: "Customized Requirements",
+    positioning: "For organizations with customized requirements, scale, integrations, or operational needs.",
+    description: "A tailored setup scoped with the WALOOP team around your requirements.",
+    price: "Custom Pricing",
     priceSuffix: "",
-    features: [
-      "Everything in Sprint, plus:",
-      "Unlimited numbers & channels",
-      "Custom AI voice + IVR flows",
-      "Dedicated onboarding manager",
-      "Enterprise SLA & security review",
-    ],
-    cta: { label: "Talk to Sales", href: "/#contact" },
+    cta: { label: "Talk to Sales", href: "/contact" },
   },
 ];
 
+/** §36 Pricing notes — charges explained separately. */
+export const pricingNotes = {
+  heading: "What the subscription covers — and what's billed separately",
+  description:
+    "Your WALOOP plan is the platform subscription. The following are separate where applicable, and are not included unless confirmed in writing.",
+  items: [
+    { icon: "LayoutDashboard", title: "Platform subscription", description: "The yearly WALOOP plan you choose." },
+    { icon: "Gauge", title: "Usage charges", description: "Charges based on usage, where applicable." },
+    { icon: "Server", title: "Provider charges", description: "Charges from communication service providers." },
+    { icon: "MessageCircle", title: "WhatsApp / Meta charges", description: "Conversation or messaging charges set by WhatsApp/Meta." },
+    { icon: "CreditCard", title: "Payment gateway charges", description: "Fees set by your payment gateway." },
+    { icon: "Wrench", title: "Custom services", description: "Custom setup, build or integration work." },
+    { icon: "Building2", title: "Enterprise requirements", description: "Scoped individually for Enterprise plans." },
+  ],
+};
+
 export const closingCta = {
-  heading: "Still deciding which plan",
-  highlight: "fits your team?",
-  description: "Talk to our team — we'll help you map WALOOP's channels to your actual call and message volume.",
-  primaryCta: { label: "Talk to Sales", href: "/#contact" },
-  secondaryCta: { label: "Explore Products", href: "/products" },
+  heading: "Not sure which plan fits?",
+  description: "Talk to the WALOOP team — we'll map the plan to your channels, journeys and requirements.",
+  primaryCta: { label: "Talk to Sales", href: "/contact" },
+  secondaryCta: { label: "Book a Demo", href: "/demo" },
 };
