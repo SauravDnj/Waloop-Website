@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/Hero";
 import { ProblemSection } from "@/components/home/ProblemSection";
+import { ChatbotAutomationSection } from "@/components/home/ChatbotAutomationSection";
 import { PlatformShowcase } from "@/components/home/PlatformShowcase";
 import { UseCasesSection } from "@/components/home/UseCasesSection";
 import { PricingSection } from "@/components/pricing/PricingSection";
@@ -13,13 +14,14 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
-// Short homepage: hero → problem → capabilities → use cases → pricing → FAQ → CTA.
+// Short homepage: hero → problem → chatbot automation → capabilities → use cases → pricing → FAQ → CTA.
 export default function Home() {
   return (
     <>
       <JsonLd data={[organizationSchema(), softwareSchema(), faqSchema(homeFaqs)]} />
       <Hero />
       <ProblemSection />
+      <ChatbotAutomationSection />
       <PlatformShowcase />
       <UseCasesSection />
       <PricingSection
