@@ -10,7 +10,7 @@ type ProductFAQSectionProps = {
 
 export function ProductFAQSection({ eyebrow = "FAQ", heading, description, items }: ProductFAQSectionProps) {
   return (
-    <section id="faq" className="relative bg-surface-alt/50 py-20 sm:py-28">
+    <section id="faq" className="relative bg-surface-alt/50 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={eyebrow} title={heading} description={description} />
         <div className="mt-12">

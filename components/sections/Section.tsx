@@ -15,7 +15,7 @@ export function Section({ id, children, className, containerClassName, tone = "d
     <section
       id={id}
       className={cn(
-        "relative scroll-mt-20 py-20 sm:py-28",
+        "relative scroll-mt-20 py-16 sm:py-24",
         tone === "tint" && "bg-section-tint",
         tone === "dark" && "section-dark overflow-hidden",
         className,

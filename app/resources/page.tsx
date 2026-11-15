@@ -10,8 +10,9 @@ import { resourceHub } from "@/lib/resources";
 import { ctaLibrary } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "WALOOP Resources | Documentation, Guides, Use Cases, FAQ & Support",
-  description: "Learn how WALOOP works — documentation, guides, complete use-case journeys, FAQ, blog and support.",
+  title: "WALOOP Resources | Docs, Guides, Use Cases, FAQ & Support",
+  description: "WALOOP documentation, how-to guides, use cases, FAQ, blog and support.",
+  alternates: { canonical: "/resources" },
 };
 
 export default function ResourcesPage() {
@@ -20,8 +21,8 @@ export default function ResourcesPage() {
       <PageHero
         eyebrow="Resources"
         icon="Library"
-        title="Learn How WALOOP Connects the Customer Journey"
-        description="Documentation, guides, use cases and answers — everything you need to plan and build with WALOOP."
+        title="WALOOP Resources"
+        description="Docs, guides, use cases and answers."
         secondary={null}
       />
       <Section>

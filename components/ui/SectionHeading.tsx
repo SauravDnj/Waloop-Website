@@ -21,7 +21,7 @@ export function SectionHeading({ eyebrow, title, description, tagline, align = "
       {description && <p className="mt-4 text-pretty text-base text-text-muted sm:text-lg">{description}</p>}
       {tagline && (
         <p className="mt-3 text-sm font-semibold">
-          <span className="text-text">{tagline.lead}</span> <span className="text-brand-green">{tagline.emphasis}</span>
+          <span className="text-text">{tagline.lead}</span> <span className="text-brand-green-text">{tagline.emphasis}</span>
         </p>
       )}
     </Reveal>

@@ -6,6 +6,8 @@ import type { PlatformSlug } from "@/lib/platform";
 export type Industry = {
   slug: string;
   name: string;
+  /** Primary SEO / AEO keyword. */
+  keyword: string;
   icon: string;
   short: string;
   seo: { title: string; description: string };
@@ -20,6 +22,7 @@ export const industries: Industry[] = [
   {
     slug: "retail-ecommerce",
     name: "Retail & E-commerce",
+    keyword: "WhatsApp for E-commerce",
     icon: "ShoppingBag",
     short: "Product discovery, enquiries, campaigns, order communication, support and payments.",
     seo: {
@@ -34,16 +37,16 @@ export const industries: Industry[] = [
     flow: {
       title: "E-commerce journey",
       caption:
-        "A campaign brings a customer to WhatsApp, where they discover products in an interactive experience, select an item, are recorded in the CRM, pay, receive a confirmation and get order follow-up.",
+        "Customers discover products on WhatsApp, select, pay and get a confirmation.",
       conceptual: true,
-      steps: ["Campaign", "Customer", "WhatsApp", "Product Discovery", "Interactive Experience", "Product Selection", "CRM", "Payment", "Confirmation", "Order Follow-up"],
+      steps: ["Campaign", "WhatsApp", "Product Discovery", "Product Selection", "Payment", "Confirmation"],
     },
     uses: ["channels", "whatsapp-mini-apps", "payments", "crm", "automations"],
-    note: "This is a conceptual example; it does not describe a dedicated order-management system.",
   },
   {
     slug: "education",
     name: "Education",
+    keyword: "WhatsApp for Education",
     icon: "GraduationCap",
     short: "Admission enquiries, course information, lead qualification, reminders and student communication.",
     seo: {
@@ -58,15 +61,16 @@ export const industries: Industry[] = [
     flow: {
       title: "Admission enquiry",
       caption:
-        "A prospective student sends an enquiry, a chatbot shares course information and asks qualification questions, the lead is stored in the CRM, a counsellor follows up and reminders are automated.",
+        "A chatbot shares course details, qualifies the student and a counsellor follows up.",
       conceptual: true,
-      steps: ["Admission Enquiry", "WhatsApp", "Chatbot — Course Information", "Qualification Questions", "CRM", "Counsellor Follow-up", "Reminder Automation"],
+      steps: ["Admission Enquiry", "Chatbot — Course Info", "Qualification", "CRM", "Counsellor Follow-up"],
     },
     uses: ["chatbots", "crm", "automations", "channels"],
   },
   {
     slug: "healthcare",
     name: "Healthcare",
+    keyword: "WhatsApp for Healthcare",
     icon: "HeartPulse",
     short: "Appointment enquiries, patient communication, reminders and support workflows.",
     seo: {
@@ -81,16 +85,17 @@ export const industries: Industry[] = [
     flow: {
       title: "Appointment journey",
       caption:
-        "A patient messages on WhatsApp, a chatbot asks which service they need, an interactive form collects details and preferences, the CRM is updated, a confirmation is sent and a reminder automation follows.",
+        "A patient picks a service in a WhatsApp form, gets a confirmation and a reminder.",
       conceptual: true,
-      steps: ["Customer", "WhatsApp", "Chatbot", "Select Service", "Interactive Form", "Select Available Option", "CRM", "Confirmation", "Reminder Automation"],
+      steps: ["WhatsApp", "Chatbot", "Select Service", "Interactive Form", "Confirmation", "Reminder"],
     },
     uses: ["chatbots", "whatsapp-mini-apps", "automations", "crm"],
-    note: "All healthcare messaging must remain subject to applicable privacy, security, and regulatory requirements. Calendar and availability features depend on your configuration.",
+    note: "Subject to applicable privacy and regulatory requirements.",
   },
   {
     slug: "real-estate",
     name: "Real Estate",
+    keyword: "WhatsApp for Real Estate",
     icon: "Building",
     short: "Property enquiries, lead capture, qualification, follow-up and sales conversations.",
     seo: {
@@ -105,7 +110,7 @@ export const industries: Industry[] = [
     flow: {
       title: "Property enquiry",
       caption:
-        "A property enquiry is captured from a campaign, qualified by a chatbot, stored in the CRM with its lead source and followed up by the sales team.",
+        "A chatbot qualifies the property enquiry and sales follows up.",
       conceptual: true,
       steps: ["Property Enquiry", "Lead Capture", "Chatbot Qualification", "CRM + Lead Source", "Sales Team", "Follow-up"],
     },
@@ -114,6 +119,7 @@ export const industries: Industry[] = [
   {
     slug: "financial-services",
     name: "Financial Services",
+    keyword: "WhatsApp for Financial Services",
     icon: "Landmark",
     short: "Customer enquiries, lead journeys, notifications and service communication.",
     seo: {
@@ -128,7 +134,7 @@ export const industries: Industry[] = [
     flow: {
       title: "Service enquiry",
       caption:
-        "A customer enquiry is identified by a chatbot, routed to the right department, handled as service communication and followed by a notification.",
+        "A chatbot identifies the request and routes it to the right department.",
       conceptual: true,
       steps: ["Customer Enquiry", "Chatbot", "Identify Request", "Department Routing", "Service Communication", "Notification"],
     },
@@ -138,6 +144,7 @@ export const industries: Industry[] = [
   {
     slug: "travel-hospitality",
     name: "Travel & Hospitality",
+    keyword: "WhatsApp for Travel & Hospitality",
     icon: "Plane",
     short: "Enquiries, booking-related communication, confirmations, support and personalized communication.",
     seo: {
@@ -152,7 +159,7 @@ export const industries: Industry[] = [
     flow: {
       title: "Booking communication",
       caption:
-        "A traveller's enquiry is answered by a chatbot, booking details are collected, a personalized confirmation is sent and support continues throughout the stay.",
+        "A chatbot collects booking details and sends a personalized confirmation.",
       conceptual: true,
       steps: ["Enquiry", "Chatbot", "Booking Details", "Personalized Confirmation", "Support", "Follow-up"],
     },
@@ -161,6 +168,7 @@ export const industries: Industry[] = [
   {
     slug: "automotive",
     name: "Automotive",
+    keyword: "WhatsApp for Automotive",
     icon: "Car",
     short: "Vehicle enquiries, lead qualification, service reminders, support and follow-up.",
     seo: {
@@ -175,7 +183,7 @@ export const industries: Industry[] = [
     flow: {
       title: "Vehicle journey",
       caption:
-        "A vehicle enquiry is qualified by a chatbot, stored in the CRM and passed to sales; later, service reminders and follow-up are automated.",
+        "A chatbot qualifies the enquiry; service reminders are automated later.",
       conceptual: true,
       steps: ["Vehicle Enquiry", "Chatbot Qualification", "CRM", "Sales Team", "Service Reminder", "Follow-up"],
     },

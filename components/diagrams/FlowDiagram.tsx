@@ -62,7 +62,7 @@ function Branches({ branches, isLast }: { branches: FlowBranch[]; isLast: boolea
                 <>
                   <motion.span
                     variants={nodeVariants}
-                    className="mx-auto rounded-full bg-brand-gradient px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white"
+                    className="mx-auto rounded-full bg-brand-gradient px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-white"
                   >
                     {branch.label}
                   </motion.span>
@@ -105,7 +105,7 @@ export function FlowDiagram({ flow, className, bare = false, showCaption = true 
       <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
         <p className="font-heading text-xs font-bold uppercase tracking-widest text-text-soft">{flow.title}</p>
         {flow.conceptual && (
-          <span className="inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-text-muted">
+          <span className="inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-text-muted">
             <Info className="h-3 w-3" /> Conceptual example
           </span>
         )}

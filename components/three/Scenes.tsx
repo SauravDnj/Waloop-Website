@@ -52,7 +52,7 @@ export function EcosystemWheel({ nodes, centerLabel = "WALOOP", highlight }: Eco
       <div className="absolute inset-[14%] rounded-full border border-dashed border-brand-blue/30" />
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2">
         <Image src="/brand/waloop-icon.png" alt="" width={512} height={228} className="w-24 sm:w-28" />
-        <span className="rounded-full bg-brand-gradient px-3 py-1 font-heading text-[11px] font-bold uppercase tracking-widest text-white">
+        <span className="rounded-full bg-brand-gradient px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-white">
           {centerLabel}
         </span>
       </div>
@@ -63,7 +63,7 @@ export function EcosystemWheel({ nodes, centerLabel = "WALOOP", highlight }: Eco
           <span
             key={label}
             className={cn(
-              "absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border bg-surface px-2.5 py-1 font-heading text-[10px] font-bold uppercase tracking-wider text-text shadow-card sm:text-[11px]",
+              "absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border bg-surface px-2.5 py-1 font-heading text-xs font-bold uppercase tracking-wider text-text shadow-card sm:text-xs",
               on ? "border-brand-blue/40" : "border-border opacity-50",
             )}
             style={{ left: `${50 + Math.cos(a) * 36}%`, top: `${50 + Math.sin(a) * 36}%` }}

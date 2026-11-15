@@ -20,8 +20,7 @@ export function UseCasesSection() {
     <Section id="use-cases">
       <SectionHeading
         eyebrow="Use cases"
-        title="Complete Journeys, Step by Step"
-        description="Real examples of how WALOOP capabilities connect — from the first message to the final action."
+        title="WhatsApp Automation Use Cases"
       />
       <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div role="tablist" aria-label="Use cases" className="flex flex-col gap-2">

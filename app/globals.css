@@ -13,7 +13,7 @@
   /* Text */
   --color-text: #071330;
   --color-text-muted: #55617a;
-  --color-text-soft: #8a94a8;
+  --color-text-soft: #626e86; /* ≥4.5:1 on white and alt surfaces */
 
   /* Brand — WALOOP Infinity Connect palette (blue → cyan → green) */
   --color-brand-blue: #0b5cff;
@@ -22,6 +22,8 @@
   --color-brand-green-dark: #071330; /* deep navy, used for opaque "dark band" sections */
   --color-brand-green-deep: #0b5cff; /* light-mode accent text (brand blue) */
   --color-brand-lime: #6fe23a; /* light green, gradient partner */
+  --color-brand-green-text: #087a3a; /* green for text — ≥4.5:1 on white */
+  --color-focus: #0b5cff;
 
   --gradient-brand: linear-gradient(100deg, #0b5cff 0%, #07b6e8 48%, #14c95f 100%);
   --gradient-ai: linear-gradient(120deg, #0b5cff 0%, #14c95f 100%);
@@ -60,7 +62,7 @@
 
   --color-text: #f2f6ff;
   --color-text-muted: #a3afc7;
-  --color-text-soft: #6f7b95;
+  --color-text-soft: #8592ac;
 
   --color-brand-blue: #4d8dff;
   --color-brand-cyan: #2fd0ff;
@@ -68,6 +70,8 @@
   --color-brand-green-dark: #02060f;
   --color-brand-green-deep: #4fb8ff;
   --color-brand-lime: #86f25a;
+  --color-brand-green-text: #2ee57a;
+  --color-focus: #4fb8ff;
 
   --gradient-brand: linear-gradient(100deg, #4d8dff 0%, #2fd0ff 48%, #2ee57a 100%);
   --gradient-ai: linear-gradient(120deg, #4d8dff 0%, #2ee57a 100%);
@@ -106,6 +110,7 @@
   --color-brand-green-dark: var(--color-brand-green-dark);
   --color-brand-green-deep: var(--color-brand-green-deep);
   --color-brand-lime: var(--color-brand-lime);
+  --color-brand-green-text: var(--color-brand-green-text);
 
   --radius-card: var(--radius-card);
   --radius-btn: var(--radius-btn);
@@ -132,6 +137,33 @@ body {
 /* Slide-in reveal animations start offset sideways; clip (not hidden) keeps sticky working. */
 main {
   overflow-x: clip;
+}
+
+/* Visible keyboard focus for every interactive element (WCAG 2.4.7). */
+:where(a, button, [role="tab"], input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+a, button, [role="tab"], summary, label[for] {
+  cursor: pointer;
+}
+
+/* Skip link — hidden until focused. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-btn);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 1rem;
 }
 
 ::selection {
@@ -189,7 +221,8 @@ h1, h2, h3, h4, h5, h6 {
 .panel-dark {
   --color-text: #ffffff;
   --color-text-muted: rgba(255, 255, 255, 0.75);
-  --color-text-soft: rgba(255, 255, 255, 0.55);
+  --color-text-soft: rgba(255, 255, 255, 0.7);
+  --color-focus: #4fb8ff;
   --color-border: rgba(255, 255, 255, 0.18);
   background: var(--gradient-dark-btn);
   box-shadow: var(--shadow-btn);
@@ -262,6 +295,8 @@ h1, h2, h3, h4, h5, h6 {
   --color-text: #f2f6ff;
   --color-text-muted: #b2bfdc;
   --color-text-soft: #7d8bb0;
+  --color-brand-green-text: #2ee57a;
+  --color-focus: #4fb8ff;
   --color-brand-green-deep: #4fb8ff;
   --color-brand-blue: #4d8dff;
   --color-brand-cyan: #2fd0ff;

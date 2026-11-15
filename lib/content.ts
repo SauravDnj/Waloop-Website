@@ -181,7 +181,6 @@ export const mainNav: NavEntry[] = [
 export const footer = {
   description:
     "WALOOP helps businesses connect with customers, manage conversations, automate workflows, create interactive experiences, and build AI-powered customer journeys.",
-  cta: "Build Smarter Customer Journeys With WALOOP",
   columns: [
     { title: "Platform", links: platformAreas.map((a) => ({ label: a.name, href: platformHref(a.slug) })) },
     { title: "Solutions", links: solutions.map((s) => ({ label: s.name, href: `/solutions/${s.slug}` })) },
@@ -211,22 +210,19 @@ export const footer = {
   ],
 };
 
-// ───────────────────────────── Homepage (§5–8, §38–40)
+// ───────────────────────────── Homepage (§5–8)
 
 export const hero = {
-  headline: "The Intelligent Platform for Customer Conversations, Automation & Growth",
+  headline: "WhatsApp CRM, Chatbot & AI Automation Platform",
   copy: [
-    "WALOOP brings WhatsApp, social channels, CRM, chatbots, automation, interactive experiences, payments, analytics, and AI together in one connected platform.",
-    "Build customer journeys that start with a message, continue through intelligent conversations and automated workflows, and lead to meaningful business actions.",
+    "WALOOP connects WhatsApp, Instagram, Facebook and RCS with CRM, chatbots, automation, payments and AI — in one platform.",
   ],
   featureStrip: [
-    "WhatsApp & Multi-Channel Engagement",
-    "Conversational CRM",
-    "Visual Chatbot Builder",
-    "Drag-and-Drop Automation",
-    "WhatsApp Mini-Apps",
+    "WhatsApp CRM",
+    "Chatbot Builder",
+    "Workflow Automation",
+    "WhatsApp Flows",
     "Payments",
-    "Dynamic Experiences",
     "AI",
     "Analytics",
   ],
@@ -235,60 +231,10 @@ export const hero = {
 export const problem = {
   heading: "Customer Conversations Shouldn't Live in Silos.",
   copy: [
-    "Businesses often manage communication, customer data, campaigns, automation, support, payments, and reporting across different tools.",
-    "That can make it harder to maintain context between a customer's conversation and the actions that follow.",
-    "WALOOP brings these capabilities together so teams can create connected customer journeys.",
+    "Messaging, CRM, automation and payments often sit in separate tools.",
+    "WALOOP connects them in one platform.",
   ],
   silos: ["Messaging Tool", "CRM", "Automation Tool", "Payment Tool", "Support Tool", "Analytics"],
-};
-
-export const platformOverview = {
-  heading: "Everything Your Customer Journey Needs. In One Platform.",
-  intro:
-    "From the first customer message to lead management, sales conversations, support, payment, follow-up, and analytics, WALOOP provides connected capabilities for the customer journey.",
-};
-
-/** §38 Why WALOOP. */
-export const whyWaloop = {
-  heading: "One Connected Platform for Modern Customer Engagement",
-  items: [
-    { icon: "Layers", title: "One Platform", description: "Bring communication, CRM, automation, and customer experiences into one environment." },
-    { icon: "MessagesSquare", title: "Multi-Channel", description: "Manage supported communication channels from one workspace." },
-    { icon: "Workflow", title: "Visual Automation", description: "Build structured workflows visually." },
-    { icon: "Contact", title: "Conversational CRM", description: "Keep conversations and customer information connected." },
-    { icon: "Smartphone", title: "Interactive Experiences", description: "Create supported WhatsApp interactive journeys." },
-    { icon: "CreditCard", title: "Payments", description: "Connect payment-related actions to customer journeys." },
-    { icon: "BrainCircuit", title: "AI", description: "Use business content as the foundation for supported AI experiences." },
-    { icon: "Users", title: "Team Collaboration", description: "Organize departments, teams, roles, and permissions." },
-    { icon: "BarChart3", title: "Analytics", description: "Monitor available customer engagement and workflow activity." },
-  ],
-};
-
-/** §39–40 How WALOOP works. */
-export const howItWorks = [
-  { step: "01", title: "Connect", description: "Connect supported channels and services." },
-  { step: "02", title: "Organize", description: "Manage contacts, customer information, teams, and departments." },
-  { step: "03", title: "Build", description: "Create chatbots, workflows, campaigns, Mini-Apps, and dynamic experiences." },
-  { step: "04", title: "Engage", description: "Communicate with customers through supported channels." },
-  { step: "05", title: "Automate", description: "Trigger workflows and repetitive actions." },
-  { step: "06", title: "Convert", description: "Move customers toward supported business actions." },
-  { step: "07", title: "Support", description: "Route conversations and requests to the appropriate team." },
-  { step: "08", title: "Measure", description: "Use available analytics and activity data." },
-];
-
-/** §67 Capability-based trust section. */
-export const trust = {
-  heading: "Built for Connected Customer Operations",
-  description:
-    "WALOOP is Meta Verified and gives teams the capabilities they need to run customer operations from one place.",
-  capabilities: [
-    { icon: "Inbox", title: "Centralized conversations" },
-    { icon: "Database", title: "Structured customer data" },
-    { icon: "Workflow", title: "Visual workflows" },
-    { icon: "ShieldCheck", title: "Team permissions" },
-    { icon: "Plug", title: "Supported integrations" },
-    { icon: "BrainCircuit", title: "AI-ready customer experiences" },
-  ],
 };
 
 // ───────────────────────────── FAQ (§57)
@@ -299,67 +245,48 @@ export const faqs: Faq[] = [
   {
     question: "What is WALOOP?",
     answer:
-      "WALOOP is a customer engagement and business automation platform that connects supported communication channels, CRM, chatbots, automation, interactive experiences, payments, dynamic content, analytics, and AI capabilities.",
+      "WALOOP is a customer engagement platform that combines WhatsApp and multi-channel messaging, CRM, chatbots, automation, payments and AI.",
   },
   {
     question: "Is WALOOP only for WhatsApp?",
-    answer:
-      "No. WhatsApp is an important supported channel, but WALOOP is a broader customer engagement platform with additional supported channels and business capabilities.",
+    answer: "No. WALOOP also supports Instagram, Facebook and RCS, depending on your configuration.",
   },
   {
-    question: "Which channels are supported?",
-    answer:
-      "WALOOP identifies WhatsApp, Instagram, Facebook, and RCS as supported channel categories. The exact capabilities available for each channel depend on the active product configuration.",
+    question: "Can I build a WhatsApp chatbot without coding?",
+    answer: "Yes. WALOOP's visual flow builder lets you build chatbots without code.",
   },
-  { question: "Can I build chatbots?", answer: "Yes. WALOOP includes a visual chatbot/flow builder for creating supported conversation journeys." },
   {
-    question: "Do I need to code to create a chatbot?",
-    answer: "The visual builder is designed to let business teams create structured conversation flows without manually coding every interaction.",
+    question: "Can I use WALOOP as a WhatsApp CRM?",
+    answer: "Yes. It includes contacts, live chat, boards, segments, bulk campaigns and CRM triggers.",
   },
   {
     question: "Can I automate business processes?",
-    answer: "Yes. WALOOP includes a visual automation/workflow builder for supported triggers, conditions, actions, data, and integrations.",
+    answer: "Yes. The visual workflow builder connects triggers, conditions and actions.",
   },
   {
-    question: "Can I use WALOOP as a CRM?",
-    answer:
-      "WALOOP includes CRM capabilities such as contacts, conversations, boards, data stores, segments, campaigns, canned replies, triggers, imports, and exports.",
+    question: "Does WALOOP support WhatsApp Flows?",
+    answer: "Yes. WhatsApp Mini-Apps (Flows) let customers fill forms and make selections inside WhatsApp.",
   },
   {
-    question: "Can WALOOP collect customer information?",
-    answer: "Supported chatbot, CRM, Mini-App, and workflow features can be used to capture structured information.",
+    question: "Can I collect payments through WhatsApp?",
+    answer: "Yes. WALOOP supports payment orders, configured payment gateways and payment automation.",
   },
   {
-    question: "Can I create WhatsApp interactive experiences?",
-    answer: "WALOOP includes WhatsApp Mini-App / Flow capabilities for supported interactive journeys.",
+    question: "Can AI answer using my business information?",
+    answer: "Yes. The AI Dashboard trains AI on your business content, with human handoff when needed.",
   },
   {
-    question: "Can I connect payments?",
-    answer: "WALOOP includes payment orders, payment gateways, and payment automation capabilities for supported configurations.",
+    question: "How much does WALOOP cost?",
+    answer: "Starter is ₹15,000/year, Growth is ₹30,000/year, and Enterprise is custom pricing.",
   },
-  { question: "Can I create personalized PDFs or images?", answer: "WALOOP includes Dynamic Experience capabilities for image and PDF experiences." },
   {
-    question: "Can AI use my business information?",
-    answer:
-      "The AI Dashboard is designed around training AI on relevant business content. The exact supported content sources and processing behaviour are documented according to the current implementation.",
-  },
-  { question: "Can teams work together?", answer: "WALOOP includes team management, roles, permissions, and department-oriented capabilities." },
-  {
-    question: "Can I manage customer support?",
-    answer:
-      "Yes. WALOOP provides live conversations, canned replies, department organization, CRM information, chatbots, and automation capabilities that can support customer service workflows.",
-  },
-  { question: "Does WALOOP have analytics?", answer: "WALOOP includes analytics areas for supported chatbot, automation, and broader platform activity." },
-  { question: "What are the current plans?", answer: "Starter is ₹15,000/year, Growth is ₹30,000/year, and Enterprise is custom pricing." },
-  {
-    question: "Are third-party charges included?",
-    answer:
-      "No. Applicable provider, usage, payment gateway, and WhatsApp/Meta charges are separate from the WALOOP subscription.",
+    question: "Are WhatsApp/Meta charges included?",
+    answer: "No. Provider, usage, payment gateway and WhatsApp/Meta charges are billed separately.",
   },
 ];
 
 /** Shorter list for the homepage. */
-export const homeFaqs: Faq[] = [faqs[0], faqs[1], faqs[2], faqs[4], faqs[6], faqs[9], faqs[11], faqs[15], faqs[16]];
+export const homeFaqs: Faq[] = [faqs[0], faqs[1], faqs[2], faqs[3], faqs[8], faqs[9]];
 
 // ───────────────────────────── CTA library (§58)
 

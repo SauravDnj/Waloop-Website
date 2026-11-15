@@ -26,7 +26,7 @@ export function MegaMenu({ group }: { group: NavGroup }) {
     <div className="relative" onMouseEnter={show} onMouseLeave={hide} onFocus={show} onBlur={hide}>
       <Link
         href={group.href}
-        className="flex items-center gap-1 rounded-lg px-2.5 py-2 font-heading text-[13px] font-semibold text-text transition-colors hover:bg-surface-alt hover:text-brand-green-deep"
+        className="flex items-center gap-1 rounded-lg px-2.5 py-2 font-heading text-sm font-semibold text-text transition-colors hover:bg-surface-alt hover:text-brand-green-deep"
         aria-expanded={open}
         aria-haspopup="true"
       >
@@ -46,7 +46,7 @@ export function MegaMenu({ group }: { group: NavGroup }) {
             <div className="grid grid-cols-1 gap-x-6 gap-y-2 p-5 sm:grid-cols-2">
               {group.columns.map((col) => (
                 <div key={col.heading}>
-                  <p className="mb-2 px-2 text-[11px] font-semibold uppercase tracking-widest text-text-soft">{col.heading}</p>
+                  <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-widest text-text-soft">{col.heading}</p>
                   <ul className="flex flex-col">
                     {col.links.map((link) => (
                       <li key={link.label}>
@@ -73,7 +73,7 @@ export function MegaMenu({ group }: { group: NavGroup }) {
                 <div className="flex items-start gap-3">
                   <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-brand-green-deep" />
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-green-deep">{group.highlight.badge}</p>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-brand-green-deep">{group.highlight.badge}</p>
                     <p className="text-sm font-semibold text-text">{group.highlight.title}</p>
                     <p className="text-xs text-text-soft">{group.highlight.description}</p>
                   </div>

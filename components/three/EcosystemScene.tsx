@@ -60,7 +60,7 @@ function Hub({ nodes, centerLabel = "WALOOP", highlight, radius = 2.0, reduceMot
           <meshPhysicalMaterial vertexColors roughness={0.2} clearcoat={1} metalness={0.15} />
         </mesh>
         <Html position={[0, -0.62, 0]} center style={{ pointerEvents: "none" }}>
-          <span className="whitespace-nowrap rounded-full bg-brand-gradient px-3 py-1 font-heading text-[11px] font-bold uppercase tracking-widest text-white shadow-brand-glow">
+          <span className="whitespace-nowrap rounded-full bg-brand-gradient px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-white shadow-brand-glow">
             {centerLabel}
           </span>
         </Html>
@@ -87,7 +87,7 @@ function Hub({ nodes, centerLabel = "WALOOP", highlight, radius = 2.0, reduceMot
               </mesh>
               <Html position={[points[i].x, points[i].y + 0.32, points[i].z]} center style={{ pointerEvents: "none" }}>
                 <span
-                  className="whitespace-nowrap rounded-full border bg-surface/90 px-2.5 py-1 font-heading text-[10px] font-bold uppercase tracking-wider shadow-card backdrop-blur transition-opacity sm:text-[11px]"
+                  className="whitespace-nowrap rounded-full border bg-surface/90 px-2.5 py-1 font-heading text-[11px] font-bold uppercase tracking-wider shadow-card backdrop-blur transition-opacity sm:text-xs"
                   style={{ borderColor: on ? colors[i] : "var(--color-border)", color: "var(--color-text)", opacity: on ? 1 : 0.45 }}
                 >
                   {label}

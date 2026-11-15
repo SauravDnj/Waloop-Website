@@ -12,9 +12,10 @@ import { industries } from "@/lib/industries";
 import { ctaLibrary } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "WALOOP Industries | Retail, Education, Healthcare, Real Estate, Finance, Travel & Automotive",
+  title: "WhatsApp Business Solutions by Industry | WALOOP",
   description:
-    "WALOOP is built for businesses that communicate with customers — retail & e-commerce, education, healthcare, real estate, financial services, travel & hospitality and automotive.",
+    "WhatsApp CRM and automation for e-commerce, education, healthcare, real estate, financial services, travel and automotive.",
+  alternates: { canonical: "/industries" },
 };
 
 export default function IndustriesPage() {
@@ -23,8 +24,8 @@ export default function IndustriesPage() {
       <PageHero
         eyebrow="Industries"
         icon="Building2"
-        title="Built for Businesses That Communicate With Customers"
-        description="WALOOP sits at the center of the industry wheel. Each industry connects to the platform capabilities it needs — channels, CRM, chatbots, automation, Mini-Apps and payments."
+        title="WhatsApp Solutions by Industry"
+        description="WALOOP for retail, education, healthcare, real estate, finance, travel and automotive."
         visual={<Ecosystem3D nodes={industries.map((i) => i.name)} className="mx-auto max-w-[520px]" />}
       />
 
@@ -37,7 +38,7 @@ export default function IndustriesPage() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white">
                   <DynamicIcon name={ind.icon} className="h-5 w-5" />
                 </span>
-                <h2 className="mt-5 font-heading text-lg font-bold text-text">{ind.name}</h2>
+                <h2 className="mt-5 font-heading text-lg font-bold text-text">{ind.keyword}</h2>
                 <ul className="mt-3 flex-1 space-y-1.5">
                   {ind.useCases.map((u) => (
                     <li key={u} className="flex items-center gap-2 text-sm text-text-muted">
@@ -45,7 +46,6 @@ export default function IndustriesPage() {
                     </li>
                   ))}
                 </ul>
-                {ind.note && <p className="mt-4 text-xs text-text-soft">{ind.note}</p>}
                 <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-green-deep">
                   Explore {ind.name}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

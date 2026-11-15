@@ -22,8 +22,7 @@ export function PlatformShowcase() {
     <Section tone="tint" id="capabilities">
       <SectionHeading
         eyebrow="Platform capabilities"
-        title="Every Capability, Explained in One Short Section"
-        description="Pick a capability to see what it is, what you can do with it, and how it looks inside WALOOP."
+        title="One Platform for Every Customer Conversation"
       />
 
       <div role="tablist" aria-label="Platform capabilities" className="no-scrollbar mt-12 flex gap-2 overflow-x-auto pb-2 lg:justify-center">
@@ -60,7 +59,7 @@ export function PlatformShowcase() {
             className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2"
           >
             <div>
-              <p className="font-heading text-xs font-bold uppercase tracking-widest text-brand-green-deep">{area.hero.eyebrow}</p>
+              <p className="font-heading text-xs font-bold uppercase tracking-widest text-brand-green-deep">{area.keyword}</p>
               <h3 className="mt-3 text-balance font-heading text-3xl font-bold text-text">{area.hero.title}</h3>
               <p className="mt-4 text-base leading-relaxed text-text-muted">{area.whatIsIt}</p>
               <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
@@ -73,10 +72,6 @@ export function PlatformShowcase() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-sm text-text-muted">
-                <span className="font-semibold text-text">Why it matters: </span>
-                {area.solution.body[0]}
-              </p>
               <Button as="a" href={platformHref(area.slug)} variant="primary" className="mt-8" icon={<ArrowRight className="h-4 w-4" />}>
                 {area.cta.label}
               </Button>

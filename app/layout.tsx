@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { MotionProvider } from "@/components/motion-provider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -22,9 +23,9 @@ const urbanist = Urbanist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.waloop.in"),
-  title: "WALOOP | Customer Engagement, WhatsApp, CRM & AI Automation Platform",
+  title: "WALOOP | WhatsApp CRM, Chatbot & AI Automation Platform",
   description:
-    "WALOOP brings WhatsApp, multi-channel communication, CRM, chatbots, automation, payments, interactive experiences, dynamic content, and AI together in one customer engagement platform.",
+    "WALOOP is a WhatsApp CRM, chatbot and AI automation platform — multi-channel messaging, CRM, workflows, payments and AI in one place.",
   keywords: [
     "WhatsApp business automation",
     "WhatsApp CRM",
@@ -42,8 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "WALOOP",
     title: "WALOOP — Built on Trust. Driven by AI.",
-    description:
-      "Connect. Automate. Engage. Grow. WALOOP brings customer conversations, CRM, chatbots, automation, interactive experiences, payments, dynamic content, analytics, and AI together in one connected platform.",
+    description: "WhatsApp CRM, chatbots, automation, payments and AI in one platform.",
     images: [{ url: "/brand/waloop-logo-light.png", width: 720, height: 447, alt: "WALOOP" }],
   },
 };
@@ -57,11 +57,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${urbanist.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <ScrollProgress />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <MotionProvider>
+            <ScrollProgress />
+            <Header />
+            <main id="main" tabIndex={-1} className="flex-1 outline-none">
+              {children}
+            </main>
+            <Footer />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

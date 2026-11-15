@@ -61,7 +61,7 @@ export function BuilderCanvas({
       )}
     >
       <div className="mb-4 flex items-center justify-between">
-        <span className="rounded-md bg-surface px-2 py-1 font-heading text-[10px] font-bold uppercase tracking-widest text-text-soft shadow-card">
+        <span className="rounded-md bg-surface px-2 py-1 font-heading text-xs font-bold uppercase tracking-widest text-text-soft shadow-card">
           {label}
         </span>
         <span className="flex gap-1" aria-hidden>

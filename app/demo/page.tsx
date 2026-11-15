@@ -10,9 +10,9 @@ import { demoFlow } from "@/lib/journeys";
 import { siteConfig } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Book a WALOOP Demo | See One Connected Customer Journey",
-  description:
-    "Book a WALOOP demo and follow one continuous customer journey — WhatsApp message, chatbot, CRM, segmentation, automation, department routing, payment, follow-up and analytics.",
+  title: "Book a WALOOP Demo | WhatsApp CRM & Automation Demo",
+  description: "Book a free WALOOP demo and see WhatsApp chatbots, CRM, automation and payments in one journey.",
+  alternates: { canonical: "/demo" },
 };
 
 // §69 — the demo follows a single customer journey rather than opening random features.
@@ -25,14 +25,14 @@ export default function DemoPage() {
         eyebrow="Book a Demo"
         icon="CalendarCheck"
         title="See One Connected Customer Journey"
-        description="Our demo follows a single customer from their first WhatsApp message to analytics — so you see how every WALOOP capability connects."
+        description="Follow one customer from WhatsApp message to analytics."
         primary={{ label: "Request a Demo", href: "#demo-form" }}
         secondary={{ label: "Chat on WhatsApp", href: siteConfig.whatsappLink }}
         visual={<WhatsAppConversation />}
       />
 
       <Section>
-        <SectionHeading eyebrow="What you'll see" title="The Demo, Step by Step" description="Eleven steps, one continuous story." />
+        <SectionHeading eyebrow="What you'll see" title="The Demo, Step by Step" />
         <div className="mx-auto mt-14 max-w-2xl">
           <JourneyRail steps={railSteps} vertical />
         </div>

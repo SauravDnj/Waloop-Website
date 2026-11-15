@@ -8,7 +8,8 @@ import { plans } from "@/lib/pricing";
 
 type PricingSectionProps = {
   eyebrow?: string;
-  heading: string;
+  /** Omit when the page hero already introduces the plans. */
+  heading?: string;
   description?: string;
   /** Compact homepage preview links to the full pricing page. */
   preview?: boolean;
@@ -18,11 +19,11 @@ type PricingSectionProps = {
 /** §36–37 Three pricing cards. */
 export function PricingSection({ eyebrow = "Pricing", heading, description, preview, tinted }: PricingSectionProps) {
   return (
-    <section id="pricing" className={cn("relative scroll-mt-20 py-20 sm:py-28", tinted && "bg-section-tint")}>
+    <section id="pricing" className={cn("relative scroll-mt-20 py-16 sm:py-24", tinted && "bg-section-tint")}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading eyebrow={eyebrow} title={heading} description={description} />
+        {heading && <SectionHeading eyebrow={eyebrow} title={heading} description={description} />}
 
-        <RevealGroup className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <RevealGroup className={cn("grid grid-cols-1 gap-6 md:grid-cols-3", heading && "mt-14")}>
           {plans.map((plan) => (
             <RevealItem key={plan.name} className="h-full">
               <div
@@ -32,7 +33,7 @@ export function PricingSection({ eyebrow = "Pricing", heading, description, prev
                 )}
               >
                 {plan.highlighted && (
-                  <span className="absolute -top-3 left-8 rounded-full bg-brand-gradient px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+                  <span className="absolute -top-3 left-8 rounded-full bg-brand-gradient px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
                     Most connected
                   </span>
                 )}
@@ -42,8 +43,7 @@ export function PricingSection({ eyebrow = "Pricing", heading, description, prev
                   {plan.priceSuffix && <span className="ml-1 text-base font-semibold text-text-soft">{plan.priceSuffix}</span>}
                 </p>
                 <p className="mt-5 font-heading text-lg font-bold leading-snug text-text">{plan.label}</p>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">{plan.positioning}</p>
-                {!preview && <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">{plan.description}</p>}
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{plan.positioning}</p>
                 {preview && <span className="flex-1" />}
                 <Button
                   as="a"

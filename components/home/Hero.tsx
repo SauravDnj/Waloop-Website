@@ -26,31 +26,21 @@ export function Hero() {
             className="mb-6 flex flex-wrap items-center gap-3"
           >
             <MetaVerifiedBadge size="sm" />
-            <span className="rounded-full border border-border bg-surface px-3 py-1 font-heading text-[11px] font-semibold uppercase tracking-widest text-text-muted shadow-card">
+            <span className="rounded-full border border-border bg-surface px-3 py-1 font-heading text-xs font-semibold uppercase tracking-widest text-text-muted shadow-card">
               {siteConfig.coreMessage}
             </span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
+          <h1
             className="text-balance font-heading text-4xl font-bold leading-[1.05] tracking-tight text-text sm:text-5xl lg:text-[3.5rem]"
           >
-            The Intelligent Platform for{" "}
-            <span className="text-gradient-brand">Customer Conversations, Automation &amp; Growth</span>
-          </motion.h1>
+            <span className="text-gradient-brand">WhatsApp CRM, Chatbot</span> &amp; AI Automation Platform
+          </h1>
 
           {hero.copy.map((p, i) => (
-            <motion.p
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.16 + i * 0.06 }}
-              className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-text-muted sm:text-lg"
-            >
+            <p key={i} className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-text-muted sm:text-lg">
               {p}
-            </motion.p>
+            </p>
           ))}
 
           <motion.div
@@ -94,9 +84,6 @@ export function Hero() {
         >
           <div aria-hidden className="absolute inset-[10%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(11,92,255,0.22),rgba(20,201,95,0.12),transparent)] blur-2xl" />
           <InfinityJourney3D />
-          <p className="-mt-2 text-center text-xs text-text-soft">
-            One connected loop — from the first message to analytics.
-          </p>
         </motion.div>
       </div>
 

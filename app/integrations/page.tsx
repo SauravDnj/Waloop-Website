@@ -12,9 +12,10 @@ import type { Flow } from "@/lib/flows";
 import { ctas } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "WALOOP Integrations | Connect WALOOP With Your Business Stack",
+  title: "WhatsApp Integrations | APIs, Webhooks, CRM & Payment Gateways | WALOOP",
   description:
-    "Connect customer engagement with your business systems — CRM systems, business applications, payment services, marketing and data systems, custom APIs, webhooks and automation services.",
+    "Connect WALOOP with CRM systems, business apps, payment gateways, APIs and webhooks.",
+  alternates: { canonical: "/integrations" },
 };
 
 // §35 Integration categories — no specific third-party names until verified (§66).
@@ -45,13 +46,6 @@ const integrationFlow: Flow = {
   ],
 };
 
-const howItConnects = [
-  { icon: "KeyRound", title: "App Authentications", description: "Connect supported external applications that require authentication inside the Automation builder." },
-  { icon: "Zap", title: "CRM Triggers", description: "Start actions from supported CRM events and customer activity." },
-  { icon: "Landmark", title: "Payment Gateways", description: "Configure supported payment gateway connections for payment journeys." },
-  { icon: "ArrowLeftRight", title: "Imports & Exports", description: "Bring existing customer data in and export data for reporting and other workflows." },
-];
-
 export default function IntegrationsPage() {
   return (
     <>
@@ -59,7 +53,7 @@ export default function IntegrationsPage() {
         eyebrow="Integrations"
         icon="Plug"
         title="Connect WALOOP With Your Business Stack"
-        description="WALOOP connects customer engagement with relevant business systems and supported external services — so conversations, data and actions stay in sync."
+        description="Connect WALOOP to your CRM, apps, payments, APIs and webhooks."
         visual={
           <Ecosystem3D
             nodes={["CRM", "Payments", "Business Apps", "APIs", "Webhooks", "Data Systems", "Marketing", "Automation"]}
@@ -87,37 +81,18 @@ export default function IntegrationsPage() {
       </Section>
 
       <Section tone="tint">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
-            <SectionHeading eyebrow="Inside WALOOP" title="How connections work in the platform" align="left" />
-            <ul className="mt-10 space-y-3">
-              {howItConnects.map((h) => (
-                <li key={h.title} className="flex gap-4 rounded-2xl border border-border bg-surface p-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/[0.08] text-brand-green-deep">
-                    <DynamicIcon name={h.icon} className="h-5 w-5" />
-                  </span>
-                  <span>
-                    <span className="block font-heading text-sm font-bold text-text">{h.title}</span>
-                    <span className="block text-sm text-text-muted">{h.description}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <Reveal>
-            <FlowDiagram flow={integrationFlow} />
-          </Reveal>
-        </div>
+        <Reveal className="mx-auto max-w-3xl">
+          <FlowDiagram flow={integrationFlow} />
+        </Reveal>
         <p className="mx-auto mt-12 flex max-w-3xl items-start gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-sm text-text-muted">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-brand-green-deep" />
-          Available integrations depend on your configuration. Talk to the WALOOP team to confirm a specific application, API or
-          payment service for your use case.
+          Available integrations depend on your configuration. Contact us to confirm a specific app or service.
         </p>
       </Section>
 
       <CTASection
         heading="Have a System You Need to Connect?"
-        description="Tell us about your stack and we'll confirm what WALOOP can connect with for your journey."
+        description="Tell us your stack and we'll confirm what WALOOP connects with."
         primary={ctas.talkToSales}
       />
     </>

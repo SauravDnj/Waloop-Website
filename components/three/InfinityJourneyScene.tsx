@@ -87,7 +87,7 @@ function Loop({ reduceMotion, active }: { reduceMotion: boolean; active: number 
         return (
           <Html key={stage.label} position={pos} center zIndexRange={[10, 0]} style={{ pointerEvents: "none" }}>
             <div
-              className="whitespace-nowrap rounded-full border bg-surface/90 px-2.5 py-1 font-heading text-[10px] font-bold uppercase tracking-wider text-text shadow-card backdrop-blur transition-all duration-500 sm:text-[11px]"
+              className="whitespace-nowrap rounded-full border bg-surface/90 px-2.5 py-1 font-heading text-xs font-bold uppercase tracking-wider text-text shadow-card backdrop-blur transition-all duration-500 sm:text-xs"
               style={{ borderColor: isActive ? color : "var(--color-border)", transform: `scale(${isActive ? 1.12 : 1})` }}
             >
               <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full align-middle" style={{ background: color }} />

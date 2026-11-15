@@ -32,12 +32,12 @@ function Panel({ children, className }: { children: React.ReactNode; className?:
 }
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <p className="mb-2 font-heading text-[10px] font-bold uppercase tracking-widest text-text-soft">{children}</p>;
+  return <p className="mb-2 font-heading text-xs font-bold uppercase tracking-widest text-text-soft">{children}</p>;
 }
 
 function Illustrative() {
   return (
-    <p className="mt-3 text-center text-[11px] text-text-soft">Illustrative example — your workspace shows your own data.</p>
+    <p className="mt-3 text-center text-xs text-text-soft">Illustrative example — your workspace shows your own data.</p>
   );
 }
 
@@ -61,7 +61,7 @@ function ChannelsVisual() {
             <span className="flex h-8 w-8 items-center justify-center rounded-lg text-white" style={{ background: channelMeta[c].color }}>
               <ChannelIcon channel={c} className="h-4 w-4" />
             </span>
-            <span className="text-[11px] font-semibold text-text sm:text-xs">{channelMeta[c].label}</span>
+            <span className="text-xs font-semibold text-text sm:text-xs">{channelMeta[c].label}</span>
           </motion.div>
         ))}
       </div>
@@ -74,7 +74,7 @@ function ChannelsVisual() {
       <div className="border-brand-gradient flex flex-1 flex-col items-center gap-2 rounded-2xl px-4 py-6 text-center shadow-glow">
         <Image src="/brand/waloop-icon.png" alt="" width={512} height={228} className="w-20" />
         <p className="font-heading text-sm font-bold text-text">WALOOP Channel Hub</p>
-        <p className="text-[11px] text-text-muted">One shared workspace for every conversation</p>
+        <p className="text-xs text-text-muted">One shared workspace for every conversation</p>
       </div>
 
       <div aria-hidden className="relative mx-auto h-6 w-px overflow-hidden bg-border sm:h-px sm:w-10">
@@ -84,7 +84,7 @@ function ChannelsVisual() {
 
       <div className="grid grid-cols-4 gap-2 sm:grid-cols-1">
         {outputs.map((o) => (
-          <span key={o} className="rounded-lg border border-brand-green/30 bg-brand-green/[0.08] px-2 py-2 text-center text-[11px] font-semibold text-text sm:px-3 sm:text-xs">
+          <span key={o} className="rounded-lg border border-brand-green/30 bg-brand-green/[0.08] px-2 py-2 text-center text-xs font-semibold text-text sm:px-3 sm:text-xs">
             {o}
           </span>
         ))}
@@ -115,17 +115,17 @@ function CrmVisual() {
               </span>
               <div>
                 <p className="text-sm font-bold text-text">Priya Sharma</p>
-                <p className="text-[11px] text-text-muted">+91 98••• •••10 · Ahmedabad</p>
+                <p className="text-xs text-text-muted">+91 98••• •••10 · Ahmedabad</p>
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {["Lead", "Growth interest", "Source: WhatsApp campaign"].map((t) => (
-                <span key={t} className="rounded-full bg-brand-blue/[0.08] px-2 py-0.5 text-[10px] font-semibold text-brand-green-deep">
+                <span key={t} className="rounded-full bg-brand-blue/[0.08] px-2 py-0.5 text-xs font-semibold text-brand-green-deep">
                   {t}
                 </span>
               ))}
             </div>
-            <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
+            <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
               {[
                 ["Business type", "Retail"],
                 ["Team size", "11–50"],
@@ -173,7 +173,7 @@ function CrmVisual() {
             <span className="max-w-[85%] rounded-lg rounded-tl-none bg-white px-2.5 py-1.5 text-[#111b21] dark:bg-[#202c33] dark:text-[#e9edef]">
               Starter — ₹15,000/year · Growth — ₹30,000/year
             </span>
-            <div className="mt-auto rounded-lg border border-dashed border-black/15 bg-white/70 px-2.5 py-2 text-[11px] text-[#54656f] dark:border-white/15 dark:bg-white/5 dark:text-[#8696a0]">
+            <div className="mt-auto rounded-lg border border-dashed border-black/15 bg-white/70 px-2.5 py-2 text-xs text-[#54656f] dark:border-white/15 dark:bg-white/5 dark:text-[#8696a0]">
               <span className="font-semibold">Canned reply:</span> “Would you like to book a demo with our team?”
             </div>
           </div>
@@ -227,7 +227,7 @@ function PaymentsVisual() {
               <span
                 key={s}
                 className={cn(
-                  "rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider transition-colors",
+                  "rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider transition-colors",
                   (s === "Paid") === paid ? "bg-brand-gradient text-white" : "bg-surface-alt text-text-soft",
                 )}
               >
@@ -283,7 +283,7 @@ function DynamicVisual() {
           </Panel>
           <Panel className="p-3">
             <Label>Template</Label>
-            <p className="font-mono text-[11px] text-text-muted">Hi {"{{name}}"}, your {"{{offer}}"} is ready</p>
+            <p className="font-mono text-xs text-text-muted">Hi {"{{name}}"}, your {"{{offer}}"} is ready</p>
           </Panel>
         </div>
         <ArrowRight className="mx-auto hidden h-5 w-5 text-brand-blue sm:block" aria-hidden />
@@ -295,14 +295,14 @@ function DynamicVisual() {
             viewport={{ once: true }}
             className="flex aspect-[4/5] flex-col justify-between rounded-xl bg-brand-gradient p-3 text-white shadow-brand-glow"
           >
-            <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider opacity-90">
+            <span className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider opacity-90">
               <ImageIcon className="h-3 w-3" /> Image
             </span>
             <div>
-              <p className="text-[11px] opacity-90">Hi Priya,</p>
+              <p className="text-xs opacity-90">Hi Priya,</p>
               <p className="font-heading text-base font-bold leading-tight">Your festive offer is ready</p>
             </div>
-            <span className="rounded-md bg-white/20 px-2 py-1 text-center text-[10px] font-semibold">Valid this week</span>
+            <span className="rounded-md bg-white/20 px-2 py-1 text-center text-xs font-semibold">Valid this week</span>
           </motion.div>
           <motion.div
             initial={{ rotate: 4, opacity: 0 }}
@@ -311,11 +311,11 @@ function DynamicVisual() {
             transition={{ delay: 0.1 }}
             className="flex aspect-[4/5] flex-col gap-1.5 rounded-xl border border-border bg-white p-3 text-[#071330] shadow-soft"
           >
-            <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#0b5cff]">
+            <span className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#0b5cff]">
               <FileText className="h-3 w-3" /> PDF
             </span>
             <p className="font-heading text-[13px] font-bold">Quotation</p>
-            <p className="text-[10px] text-[#55617a]">Prepared for Priya · Ahmedabad</p>
+            <p className="text-xs text-[#55617a]">Prepared for Priya · Ahmedabad</p>
             <span className="mt-1 h-1.5 w-full rounded bg-[#eef3f9]" />
             <span className="h-1.5 w-4/5 rounded bg-[#eef3f9]" />
             <span className="h-1.5 w-3/5 rounded bg-[#eef3f9]" />
@@ -357,12 +357,12 @@ function AiVisual() {
           Do you have a yearly plan for small businesses?
         </p>
         <p className="max-w-[90%] rounded-lg rounded-tl-none bg-white px-2.5 py-1.5 text-[#111b21] dark:bg-[#202c33] dark:text-[#e9edef]">
-          <span className="mb-0.5 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#0b5cff] dark:text-[#4fb8ff]">
+          <span className="mb-0.5 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#0b5cff] dark:text-[#4fb8ff]">
             <BrainCircuit className="h-3 w-3" /> AI response
           </span>
           Yes — Starter is ₹15,000/year for businesses starting with customer engagement. Want me to connect you with our team?
         </p>
-        <p className="mx-auto w-fit rounded-full bg-white/80 px-2.5 py-0.5 text-[10px] font-semibold text-[#54656f] dark:bg-white/10 dark:text-[#8696a0]">
+        <p className="mx-auto w-fit rounded-full bg-white/80 px-2.5 py-0.5 text-xs font-semibold text-[#54656f] dark:bg-white/10 dark:text-[#8696a0]">
           <Users className="mr-1 inline h-3 w-3" /> Human handoff available
         </p>
       </Panel>
@@ -380,7 +380,7 @@ function AnalyticsVisual() {
         <Panel className="col-span-2">
           <div className="flex items-center justify-between">
             <Label>Conversations · channel activity</Label>
-            <span className="flex gap-2 text-[10px] text-text-soft">
+            <span className="flex gap-2 text-xs text-text-soft">
               <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-brand-blue" />WhatsApp</span>
               <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-brand-green" />Other</span>
             </span>
@@ -409,7 +409,7 @@ function AnalyticsVisual() {
             <ul className="space-y-2">
               {card.rows.map((r, i) => (
                 <li key={r}>
-                  <span className="text-[11px] text-text-muted">{r}</span>
+                  <span className="text-xs text-text-muted">{r}</span>
                   <span className="mt-0.5 block h-1.5 overflow-hidden rounded-full bg-surface-alt">
                     <motion.span
                       initial={{ width: 0 }}
@@ -425,7 +425,7 @@ function AnalyticsVisual() {
           </Panel>
         ))}
       </div>
-      <p className="mt-3 text-center text-[11px] text-text-soft">Conceptual dashboard — no real figures shown. Your analytics reflect your own account activity.</p>
+      <p className="mt-3 text-center text-xs text-text-soft">Conceptual dashboard — no real figures shown. Your analytics reflect your own account activity.</p>
     </div>
   );
 }
@@ -440,7 +440,7 @@ function WorkspaceVisual() {
         <Panel className="flex items-center gap-2 px-4 py-2.5">
           <BadgeCheck className="h-4 w-4 text-brand-green-deep" />
           <span className="font-heading text-sm font-bold text-text">Admin</span>
-          <span className="rounded-full bg-brand-blue/[0.08] px-2 py-0.5 text-[10px] font-semibold text-brand-green-deep">All permissions</span>
+          <span className="rounded-full bg-brand-blue/[0.08] px-2 py-0.5 text-xs font-semibold text-brand-green-deep">All permissions</span>
         </Panel>
         <div aria-hidden className="h-5 w-px bg-border" />
         <div aria-hidden className="h-px w-[80%] bg-border" />
@@ -467,7 +467,7 @@ function WorkspaceVisual() {
           ))}
         </div>
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-2 text-center text-[11px]">
+      <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
         {["Roles", "Permissions", "Departments"].map((t) => (
           <span key={t} className="rounded-lg bg-surface-alt px-2 py-1.5 font-semibold text-text-muted">
             {t}

@@ -50,7 +50,7 @@ export function PageHero({
               <span className="text-text">{eyebrow}</span>
             </nav>
           )}
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 font-heading text-[11px] font-bold uppercase tracking-widest text-brand-green-deep shadow-card">
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 font-heading text-xs font-bold uppercase tracking-widest text-brand-green-deep shadow-card">
             {icon && <DynamicIcon name={icon} className="h-3.5 w-3.5" />} {eyebrow}
           </span>
           <h1 className="text-balance font-heading text-4xl font-bold leading-[1.08] tracking-tight text-text sm:text-5xl">{title}</h1>

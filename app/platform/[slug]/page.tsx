@@ -13,7 +13,12 @@ export async function generateMetadata({ params }: PageProps<"/platform/[slug]">
   const { slug } = await params;
   const area = getPlatformArea(slug);
   if (!area) return {};
-  return { title: area.seo.title, description: area.seo.description };
+  return {
+    title: area.seo.title,
+    description: area.seo.description,
+    keywords: [area.keyword, ...area.keywords],
+    alternates: { canonical: `/platform/${area.slug}` },
+  };
 }
 
 export default async function PlatformAreaPage({ params }: PageProps<"/platform/[slug]">) {

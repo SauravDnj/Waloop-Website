@@ -13,7 +13,7 @@ const connected = ["Channels", "CRM", "Chatbot", "Automation", "AI", "Mini-Apps 
 export function ProblemSection() {
   return (
     <Section tone="tint">
-      <SectionHeading eyebrow="The problem" title={problem.heading} description={problem.copy[0]} />
+      <SectionHeading eyebrow="The problem" title={problem.heading} description={problem.copy.join(" ")} />
 
       <div className="mt-14 grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
         {/* Before: silos */}
@@ -35,7 +35,6 @@ export function ProblemSection() {
               </motion.div>
             ))}
           </div>
-          <p className="mt-4 text-sm text-text-muted">{problem.copy[1]}</p>
         </div>
 
         <div className="flex justify-center" aria-hidden>
@@ -65,7 +64,6 @@ export function ProblemSection() {
               ))}
             </div>
           </div>
-          <p className="mt-5 text-center text-sm text-text-muted">{problem.copy[2]}</p>
         </div>
       </div>
     </Section>

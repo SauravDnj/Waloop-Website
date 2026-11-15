@@ -13,6 +13,7 @@ import { contactDetails, hero } from "@/lib/products/contact";
 export const metadata: Metadata = {
   title: "Contact WALOOP | Let's Build Your Customer Journey",
   description: `Talk to the WALOOP team about plans, product capabilities or your use case. WhatsApp ${siteConfig.whatsapp}, phone ${siteConfig.phone}, email ${siteConfig.email}.`,
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

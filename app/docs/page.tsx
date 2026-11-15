@@ -10,9 +10,9 @@ import { platformAreas, platformHref } from "@/lib/platform";
 import { ctas } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "WALOOP Documentation | How Each Platform Capability Works",
-  description:
-    "Documentation overview for WALOOP — channels, CRM, chatbots, automations, WhatsApp Mini-Apps, payments, dynamic experiences, AI, analytics and workspace.",
+  title: "WALOOP Documentation | WhatsApp CRM, Chatbot & Automation Docs",
+  description: "WALOOP documentation: channels, CRM, chatbots, automations, WhatsApp Mini-Apps, payments, AI, analytics and workspace.",
+  alternates: { canonical: "/docs" },
 };
 
 export default function DocsPage() {
@@ -22,7 +22,7 @@ export default function DocsPage() {
         eyebrow="Documentation"
         icon="BookOpen"
         title="How Each WALOOP Capability Works"
-        description="A plain-language reference for every platform area: what it is, what it includes and how it connects. Exact capabilities can depend on your plan and configuration."
+        description="A short reference for every WALOOP platform area."
         primary={{ label: "Browse Guides", href: "/guides" }}
         secondary={{ label: "Get Support", href: "/support" }}
       />

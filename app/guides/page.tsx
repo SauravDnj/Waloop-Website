@@ -12,9 +12,9 @@ import { getPlatformArea, platformHref } from "@/lib/platform";
 import { ctas } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "WALOOP Guides | Build Chatbots, Automations, Mini-Apps, Payments & AI",
-  description:
-    "Step-by-step overview guides for building with WALOOP — your first chatbot, a lead automation, a WhatsApp Mini-App, a payment journey, AI on your content and team setup.",
+  title: "How-To Guides | Build a WhatsApp Chatbot, Automation & Mini-App | WALOOP",
+  description: "Step-by-step guides: build a WhatsApp chatbot, lead automation, Mini-App, payment journey and train AI with WALOOP.",
+  alternates: { canonical: "/guides" },
 };
 
 export default function GuidesPage() {
@@ -23,8 +23,8 @@ export default function GuidesPage() {
       <PageHero
         eyebrow="Guides"
         icon="Compass"
-        title="Step-by-Step Guides for Common Journeys"
-        description="Overview walkthroughs for the most common WALOOP builds. For hands-on help in your workspace, the WALOOP team is a message away."
+        title="Step-by-Step WALOOP Guides"
+        description="Quick how-to guides for the most common builds."
         primary={ctas.getStarted}
         secondary={{ label: "Get Support", href: "/support" }}
       >

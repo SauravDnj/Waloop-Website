@@ -44,7 +44,7 @@ export function Header() {
                 key={entry.label}
                 href={entry.href}
                 className={cn(
-                  "rounded-lg px-2.5 py-2 font-heading text-[13px] font-semibold text-text transition-colors hover:bg-surface-alt hover:text-brand-green-deep",
+                  "rounded-lg px-2.5 py-2 font-heading text-sm font-semibold text-text transition-colors hover:bg-surface-alt hover:text-brand-green-deep",
                   pathname === entry.href && "text-brand-green-deep",
                 )}
               >
@@ -58,7 +58,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href={siteConfig.appUrl}
-            className="font-heading text-[13px] font-semibold text-text-muted transition-colors hover:text-text"
+            className="font-heading text-sm font-semibold text-text-muted transition-colors hover:text-text"
           >
             Login
           </Link>
@@ -110,7 +110,7 @@ export function Header() {
                       className="flex w-full items-center justify-between py-3.5 text-left font-heading text-[15px] font-semibold text-text"
                     >
                       {entry.label}
-                      <ChevronDown className={cn("h-4 w-4 transition-transform", mobileGroup === entry.label && "rotate-180")} />
+                      <ChevronDown aria-hidden className={cn("h-4 w-4 transition-transform", mobileGroup === entry.label && "rotate-180")} />
                     </button>
                     <AnimatePresence>
                       {mobileGroup === entry.label && (
@@ -121,13 +121,13 @@ export function Header() {
                           className="overflow-hidden"
                         >
                           <div className="flex flex-col gap-1 pb-3">
-                            <Link href={entry.href} className="px-2 py-1.5 text-sm font-semibold text-brand-green-deep">
+                            <Link href={entry.href} className="flex min-h-11 items-center px-2 text-sm font-semibold text-brand-green-deep">
                               {entry.label} overview →
                             </Link>
                             {entry.columns
                               .flatMap((c) => c.links)
                               .map((link) => (
-                                <Link key={link.label} href={link.href} className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-text-muted">
+                                <Link key={link.label} href={link.href} className="flex min-h-11 items-center gap-3 rounded-lg px-2 text-base text-text-muted hover:bg-surface-alt hover:text-text">
                                   <NavIcon name={link.icon} className="h-4 w-4 text-brand-green-deep" />
                                   {link.label}
                                 </Link>
@@ -148,13 +148,13 @@ export function Header() {
                 ),
               )}
               <div className="mt-4 grid grid-cols-2 gap-2 pb-2">
-                <Button as="a" href={ctas.bookDemo.href} variant="secondary" size="sm">
+                <Button as="a" href={ctas.bookDemo.href} variant="secondary" size="md">
                   {ctas.bookDemo.label}
                 </Button>
-                <Button as="a" href={ctas.getStarted.href} variant="brand" size="sm">
+                <Button as="a" href={ctas.getStarted.href} variant="brand" size="md">
                   {ctas.getStarted.label}
                 </Button>
-                <Link href={siteConfig.appUrl} className="col-span-2 py-2 text-center text-sm font-semibold text-text-muted">
+                <Link href={siteConfig.appUrl} className="col-span-2 flex min-h-11 items-center justify-center text-sm font-semibold text-text-muted">
                   Login to {siteConfig.appLabel}
                 </Link>
               </div>
