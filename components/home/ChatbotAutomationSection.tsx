@@ -19,11 +19,11 @@ export function ChatbotAutomationSection() {
   return (
     <Section id="chatbot-automation">
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <Reveal direction="right" className="order-2 lg:order-1">
+        <Reveal direction="right">
           <WhatsAppConversation />
         </Reveal>
 
-        <div className="order-1 lg:order-2">
+        <div>
           <Reveal>
             <Badge className="mb-4">WhatsApp Chatbot Automation</Badge>
             <h2 className="text-balance font-heading text-3xl font-bold tracking-tight text-text sm:text-4xl">
