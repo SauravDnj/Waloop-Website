@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "@/components/layout/Logo";
 import { MegaMenu, NavIcon } from "@/components/layout/MegaMenu";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -122,7 +122,7 @@ export function Header() {
                         >
                           <div className="flex flex-col gap-1 pb-3">
                             <Link href={entry.href} className="flex min-h-11 items-center px-2 text-sm font-semibold text-brand-green-deep">
-                              {entry.label} overview →
+                              {entry.label} overview <ArrowRight aria-hidden className="ml-1 h-4 w-4" />
                             </Link>
                             {entry.columns
                               .flatMap((c) => c.links)

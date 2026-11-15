@@ -499,7 +499,7 @@ export function PlatformVisual({ visual, className }: { visual: VisualKey; class
             branches={[
               { label: "Products", nodes: [{ type: "Message", title: "Product menu" }] },
               { label: "Support", nodes: [{ type: "Handoff", title: "Support department" }] },
-              { label: "Demo", nodes: [{ type: "Bot field", title: "Lead capture → CRM", tone: "end" }] },
+              { label: "Demo", nodes: [{ type: "Bot field", title: "Lead capture + CRM record", tone: "end" }] },
             ]}
           />
         );

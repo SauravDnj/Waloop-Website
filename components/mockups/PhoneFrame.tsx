@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BadgeCheck, ChevronLeft, MoreVertical, Phone, Video } from "lucide-react";
+import { BadgeCheck, CheckCheck, ChevronLeft, MoreVertical, Phone, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /** A WhatsApp-style phone shell used by every conversation mockup on the site. */
@@ -73,9 +73,9 @@ export function Bubble({
         )}
       >
         {children}
-        <span className="mt-0.5 block text-right text-[9px] text-[#667781] dark:text-[#8696a0]">
+        <span className="mt-0.5 flex items-center justify-end gap-0.5 text-[9px] text-[#667781] dark:text-[#8696a0]">
           {time}
-          {mine && <span className="ml-1 text-[#53bdeb]">✓✓</span>}
+          {mine && <CheckCheck aria-label="Read" className="h-3 w-3 text-[#53bdeb]" />}
         </span>
       </div>
     </div>

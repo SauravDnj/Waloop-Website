@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Section } from "@/components/sections/Section";
 import { RevealGroup, RevealItem, Reveal } from "@/components/ui/Reveal";
@@ -63,10 +63,17 @@ export default function ContactPage() {
             <p className="mt-4 text-base text-text-muted">
               Share a few details and we&apos;ll continue the conversation on WhatsApp — the same channel your customers use.
             </p>
-            <ul className="mt-6 space-y-2 text-sm text-text-muted">
-              <li>• Plans: Starter, Growth and Enterprise</li>
-              <li>• Capabilities: channels, CRM, chatbots, automation, Mini-Apps, payments, AI</li>
-              <li>• Your use case and the journey you want to build</li>
+            <ul className="mt-6 space-y-2.5 text-sm text-text-muted">
+              {[
+                "Plans: Starter, Growth and Enterprise",
+                "Capabilities: channels, CRM, chatbots, automation, Mini-Apps, payments, AI",
+                "Your use case and the journey you want to build",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <CheckCircle2 aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
+                  {item}
+                </li>
+              ))}
             </ul>
             <MetaVerifiedBadge className="mt-8" />
           </Reveal>

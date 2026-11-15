@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Accordion } from "@/components/ui/Accordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { faqs as allFaqs, homeFaqs, type Faq } from "@/lib/content";
@@ -27,8 +28,8 @@ export function FAQ({
         </div>
         {showMore && items.length < allFaqs.length && (
           <p className="mt-8 text-center text-sm">
-            <Link href="/faq" className="font-semibold text-brand-green-deep hover:underline">
-              View all {allFaqs.length} questions →
+            <Link href="/faq" className="inline-flex items-center gap-1 font-semibold text-brand-green-deep hover:underline">
+              View all {allFaqs.length} questions <ArrowRight aria-hidden className="h-4 w-4" />
             </Link>
           </p>
         )}

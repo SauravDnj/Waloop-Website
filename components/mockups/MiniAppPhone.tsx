@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, CheckCircle2, ChevronRight, Database, X } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, CheckCircle2, ChevronRight, Database, X } from "lucide-react";
 import { Bubble, PhoneFrame, ReplyButton } from "@/components/mockups/PhoneFrame";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +39,11 @@ export function MiniAppPhone({ className }: { className?: string }) {
 
       <PhoneFrame>
         <div className="flex h-full flex-col gap-2 px-3 py-3">
-          <Bubble from="business">Hi! Book your appointment request in a few taps 👇</Bubble>
+          <Bubble from="business">
+            <span className="inline-flex items-center gap-1">
+              Hi! Book your appointment request in a few taps <ArrowDown aria-hidden className="h-3.5 w-3.5" />
+            </span>
+          </Bubble>
           <div className="max-w-[85%]">
             <ReplyButton active={step === 0}>Open booking</ReplyButton>
           </div>
@@ -125,7 +129,11 @@ export function MiniAppPhone({ className }: { className?: string }) {
 
           {step === 4 && (
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-2">
-              <Bubble from="customer">✅ Submitted: {choice}</Bubble>
+              <Bubble from="customer">
+                <span className="inline-flex items-center gap-1">
+                  <CheckCircle2 aria-hidden className="h-3.5 w-3.5 text-[#25D366]" /> Submitted: {choice}
+                </span>
+              </Bubble>
               <Bubble from="business">
                 <span className="inline-flex items-center gap-1 font-semibold">
                   <CheckCircle2 className="h-3.5 w-3.5 text-[#25D366]" /> Request confirmed
@@ -142,8 +150,8 @@ export function MiniAppPhone({ className }: { className?: string }) {
       </PhoneFrame>
 
       {step === 0 && (
-        <button type="button" onClick={next} className="text-sm font-semibold text-brand-green-deep hover:underline">
-          Tap “Open booking” to start →
+        <button type="button" onClick={next} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-green-deep hover:underline">
+          Tap “Open booking” to start <ArrowRight aria-hidden className="h-4 w-4" />
         </button>
       )}
       {step === 4 && (
