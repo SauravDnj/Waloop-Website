@@ -41,7 +41,7 @@ export default async function SolutionPage({ params }: PageProps<"/solutions/[sl
     <>
       <JsonLd
         data={[
-          faqSchema([{ question: `What is ${solution.keyword}?`, answer: `${solution.short} ${solution.hero.description}` }]),
+          faqSchema([{ question: solution.question, answer: `${solution.short} ${solution.hero.description}` }]),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Solutions", path: "/solutions" },
@@ -59,7 +59,7 @@ export default async function SolutionPage({ params }: PageProps<"/solutions/[sl
       />
 
       <Section>
-        <AnswerBlock question={`What is ${solution.keyword}?`} answer={solution.short} />
+        <AnswerBlock question={solution.question} answer={solution.short} />
         <JourneyRail steps={solution.steps} className="mt-14" />
       </Section>
 

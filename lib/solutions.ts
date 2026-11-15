@@ -9,7 +9,9 @@ export type Solution = {
   /** Primary SEO / AEO keyword. */
   keyword: string;
   icon: string;
-  /** One-line description, also used as the direct "What is…" answer. */
+  /** The natural question this page answers. */
+  question: string;
+  /** One-line description, also used as the direct answer to `question`. */
   short: string;
   seo: { title: string; description: string };
   hero: { title: string; description: string };
@@ -24,6 +26,7 @@ export const solutions: Solution[] = [
     name: "Lead Generation",
     keyword: "WhatsApp Lead Generation",
     icon: "Magnet",
+    question: "What is WhatsApp lead generation?",
     short: "Capture enquiries, qualify leads with chatbots and route them to sales automatically.",
     seo: {
       title: "WhatsApp Lead Generation & Qualification | WALOOP",
@@ -51,6 +54,7 @@ export const solutions: Solution[] = [
     name: "Marketing",
     keyword: "WhatsApp Marketing",
     icon: "Megaphone",
+    question: "What is WhatsApp marketing?",
     short: "Segment audiences, send bulk WhatsApp campaigns and automate follow-up.",
     seo: {
       title: "WhatsApp Marketing | Bulk Campaigns & Segmentation | WALOOP",
@@ -78,6 +82,7 @@ export const solutions: Solution[] = [
     name: "Sales",
     keyword: "Conversational Sales on WhatsApp",
     icon: "TrendingUp",
+    question: "What is conversational sales on WhatsApp?",
     short: "Qualify leads in conversation and hand them to sales with full context.",
     seo: {
       title: "Conversational Sales on WhatsApp | WALOOP",
@@ -105,6 +110,7 @@ export const solutions: Solution[] = [
     name: "Customer Support",
     keyword: "WhatsApp Customer Support",
     icon: "Headset",
+    question: "What is WhatsApp customer support?",
     short: "Answer common questions with bots and AI, and route the rest to the right team.",
     seo: {
       title: "WhatsApp Customer Support & Helpdesk | WALOOP",
@@ -140,6 +146,7 @@ export const solutions: Solution[] = [
     name: "Customer Engagement",
     keyword: "Customer Engagement Platform",
     icon: "HeartHandshake",
+    question: "What is a customer engagement platform?",
     short: "Personalized conversations, interactive WhatsApp experiences and dynamic content.",
     seo: {
       title: "Customer Engagement Platform | WALOOP",
@@ -168,6 +175,7 @@ export const solutions: Solution[] = [
     name: "Business Automation",
     keyword: "Business Process Automation",
     icon: "Workflow",
+    question: "What is business process automation?",
     short: "Turn repetitive tasks into no-code workflows with triggers, conditions and actions.",
     seo: {
       title: "Business Process Automation | No-Code Workflows | WALOOP",
@@ -203,6 +211,7 @@ export const solutions: Solution[] = [
     name: "Payment Journeys",
     keyword: "Payments in Customer Conversations",
     icon: "CreditCard",
+    question: "How do payments work in WhatsApp conversations?",
     short: "Go from conversation to payment order, confirmation and follow-up.",
     seo: {
       title: "Collect Payments in WhatsApp Conversations | WALOOP",
