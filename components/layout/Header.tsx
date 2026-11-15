@@ -77,7 +77,7 @@ export function Header() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
-            className="btn-soft-dark flex h-10 w-10 items-center justify-center rounded-btn"
+            className="btn-solid flex h-10 w-10 items-center justify-center rounded-btn"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

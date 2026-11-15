@@ -52,7 +52,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       <motion.span
         animate={{ x: isDark ? 28 : 0 }}
         transition={{ type: "spring", stiffness: 500, damping: 32 }}
-        className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-green text-white shadow-card"
+        className="relative flex h-7 w-7 items-center justify-center rounded-full bg-[var(--color-btn)] text-white shadow-card"
       >
         <AnimatePresence mode="wait" initial={false}>
           {mounted && isDark ? (

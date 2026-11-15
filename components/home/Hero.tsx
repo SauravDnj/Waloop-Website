@@ -83,7 +83,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="relative"
         >
-          <div aria-hidden className="absolute inset-[10%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(11,92,255,0.22),rgba(20,201,95,0.12),transparent)] blur-2xl" />
+          <div aria-hidden className="absolute inset-[10%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(11,92,255,0.18),transparent)] blur-2xl" />
           <InfinityJourney3D />
         </motion.div>
       </div>

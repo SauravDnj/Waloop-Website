@@ -69,7 +69,7 @@ export function MegaMenu({ group }: { group: NavGroup }) {
             </div>
 
             {group.highlight && (
-              <div className="flex items-center justify-between gap-4 border-t border-border bg-gradient-to-r from-brand-blue/[0.07] to-brand-green/[0.07] px-6 py-4">
+              <div className="flex items-center justify-between gap-4 border-t border-border bg-surface-alt px-6 py-4">
                 <div className="flex items-start gap-3">
                   <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-brand-green-deep" />
                   <div>

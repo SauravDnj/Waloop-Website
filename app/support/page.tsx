@@ -44,7 +44,7 @@ export default function SupportPage() {
               >
                 <span
                   className="flex h-11 w-11 items-center justify-center rounded-xl text-white"
-                  style={{ background: c.key === "whatsapp" ? "#25D366" : "var(--gradient-brand)" }}
+                  style={{ background: c.key === "whatsapp" ? "#25D366" : "var(--color-btn)" }}
                 >
                   {c.key === "whatsapp" ? <ChannelIcon channel="whatsapp" /> : <DynamicIcon name={c.key} className="h-5 w-5" />}
                 </span>

@@ -40,7 +40,7 @@ export default function ContactPage() {
               >
                 <span
                   className="flex h-10 w-10 items-center justify-center rounded-xl text-white"
-                  style={{ background: d.icon === "whatsapp" ? "#25D366" : "var(--gradient-brand)" }}
+                  style={{ background: d.icon === "whatsapp" ? "#25D366" : "var(--color-btn)" }}
                 >
                   {d.icon === "whatsapp" ? <ChannelIcon channel="whatsapp" /> : <DynamicIcon name={d.icon} className="h-5 w-5" />}
                 </span>

@@ -393,7 +393,7 @@ function AnalyticsVisual() {
                 whileInView={{ height: `${h}%` }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.04 }}
-                className="flex-1 rounded-t bg-gradient-to-t from-brand-blue to-brand-cyan"
+                className="flex-1 rounded-t bg-[var(--color-btn)]"
               />
             ))}
           </div>

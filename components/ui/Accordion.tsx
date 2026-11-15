@@ -31,7 +31,7 @@ function AccordionItem({ id, question, answer, isOpen, onToggle }: AccordionItem
           className="flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 py-4 text-left"
         >
           <span className="font-sans text-base font-semibold text-text">{question}</span>
-          <span aria-hidden className="btn-soft-dark flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
+          <span aria-hidden className="btn-solid flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
             <ChevronDown className={cn("h-4 w-4 text-brand-green transition-transform duration-300", isOpen && "rotate-180")} />
           </span>
         </button>
