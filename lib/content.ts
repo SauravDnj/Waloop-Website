@@ -17,8 +17,8 @@ export const siteConfig = {
     "WALOOP helps businesses communicate with customers, organize customer data, automate repetitive processes, create interactive experiences, and build AI-powered customer journeys from one platform.",
   supportingStatement:
     "WALOOP brings conversations, CRM, chatbots, automation, WhatsApp experiences, payments, dynamic experiences, and AI together so businesses can build connected customer journeys from one platform.",
-  website: "https://www.waloop.in",
-  websiteLabel: "www.waloop.in",
+  website: "https://waloop.in",
+  websiteLabel: "waloop.in",
   appUrl: "https://app.waloop.in",
   appLabel: "app.waloop.in",
   email: "official.waloop@gmail.com",

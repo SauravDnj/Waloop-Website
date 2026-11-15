@@ -22,7 +22,7 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.waloop.in"),
+  metadataBase: new URL("https://waloop.in"),
   title: "WALOOP | WhatsApp CRM, Chatbot & AI Automation Platform",
   description:
     "WALOOP is a WhatsApp CRM, chatbot and AI automation platform — multi-channel messaging, CRM, workflows, payments and AI in one place.",
