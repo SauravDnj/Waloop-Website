@@ -257,6 +257,11 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 44px 44px;
 }
 
+.bg-hero-dots {
+  background-image: radial-gradient(var(--color-border) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
 .bg-hero-glow {
   background-image:
     radial-gradient(60% 60% at 50% 0%, var(--color-hero-glow-1), transparent),
