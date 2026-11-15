@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarCheck, Check } from "lucide-react";
+import { ArrowRight, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
+import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { MetaVerifiedBadge } from "@/components/brand/MetaVerifiedBadge";
 import { ChannelIcon, channelMeta, type ChannelKey } from "@/components/brand/ChannelIcon";
 import { InfinityJourney3D } from "@/components/three/Scenes";
@@ -91,8 +92,11 @@ export function Hero() {
       <div className="border-t border-border bg-surface/60 py-4">
         <Marquee durationSeconds={36}>
           {hero.featureStrip.map((f) => (
-            <span key={f} className="flex items-center gap-2 whitespace-nowrap font-heading text-sm font-semibold text-text-muted">
-              <Check className="h-4 w-4 text-brand-green" /> {f}
+            <span key={f.label} className="flex items-center gap-2.5 whitespace-nowrap font-heading text-sm font-semibold text-text">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-gradient text-white shadow-brand-glow">
+                <DynamicIcon name={f.icon} className="h-4 w-4" />
+              </span>
+              {f.label}
             </span>
           ))}
         </Marquee>

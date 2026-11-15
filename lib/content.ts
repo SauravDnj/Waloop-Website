@@ -217,14 +217,15 @@ export const hero = {
   copy: [
     "WALOOP connects WhatsApp, Instagram, Facebook and RCS with CRM, chatbots, automation, payments and AI — in one platform.",
   ],
+  /** Scrolling feature strip under the hero — each item has its own Lucide (SVG) icon. */
   featureStrip: [
-    "WhatsApp CRM",
-    "Chatbot Builder",
-    "Workflow Automation",
-    "WhatsApp Flows",
-    "Payments",
-    "AI",
-    "Analytics",
+    { label: "WhatsApp CRM", icon: "Contact" },
+    { label: "Chatbot Builder", icon: "Bot" },
+    { label: "Workflow Automation", icon: "Workflow" },
+    { label: "WhatsApp Flows", icon: "Smartphone" },
+    { label: "Payments", icon: "CreditCard" },
+    { label: "AI", icon: "BrainCircuit" },
+    { label: "Analytics", icon: "BarChart3" },
   ],
 };
 
