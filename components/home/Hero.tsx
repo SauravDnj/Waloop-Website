@@ -9,7 +9,7 @@ import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { MetaVerifiedBadge } from "@/components/brand/MetaVerifiedBadge";
 import { ChannelIcon, channelMeta, type ChannelKey } from "@/components/brand/ChannelIcon";
 import { InfinityJourney3D } from "@/components/three/Scenes";
-import { HeroChatCard, HeroToast, HeroWhatsAppBadge } from "@/components/home/HeroWhatsAppOverlay";
+import { HeroLiveDemo } from "@/components/home/HeroWhatsAppOverlay";
 import { ctas, hero } from "@/lib/content";
 
 const channels: ChannelKey[] = ["whatsapp", "instagram", "facebook", "rcs"];
@@ -151,15 +151,15 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative lg:pb-40"
+          className="relative mx-auto w-full max-w-xl lg:max-w-none"
         >
-          <div aria-hidden className="absolute inset-[10%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(11,92,255,0.18),transparent)] blur-2xl" />
-          <InfinityJourney3D />
-
-          {/* WhatsApp-style live activity around the loop */}
-          <HeroToast className="absolute left-0 top-0 hidden sm:block" />
-          <HeroWhatsAppBadge className="absolute right-2 top-0 hidden sm:block" />
-          <HeroChatCard className="mx-auto -mt-4 lg:absolute lg:bottom-0 lg:right-6 lg:mt-0" />
+          <div aria-hidden className="absolute inset-x-[10%] top-0 -z-10 aspect-square rounded-full bg-[radial-gradient(closest-side,rgba(11,92,255,0.16),transparent)] blur-2xl" />
+          {/* The loop canvas has empty space above and below the labels; trim it proportionally so it scales with width. */}
+          <div className="-mb-[14%] -mt-[16%]">
+            <InfinityJourney3D />
+          </div>
+          {/* WhatsApp chat + the automation it triggers */}
+          <HeroLiveDemo className="relative" />
         </motion.div>
       </div>
 
